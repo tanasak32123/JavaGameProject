@@ -12,9 +12,9 @@ public class Mana extends Potion implements Usable{
 		return mana;
 	}
 	
-	public int useItem(Player player) {
+	public int useItem(??? assignedCharacter) {
 		isUsed = true;
-		player.refillMana(mana);
+		assignedCharacter.refillMana(mana);
 		return mana;
 	}
 	

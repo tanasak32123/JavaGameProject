@@ -30,6 +30,27 @@ public class Weapon extends Item{
 		assignedCharacter.increaseCritical(crit);
 	}
 	
+	public String getDamageText() {
+		if (damage > 0) {
+			return "\nDamage: "+ damage;
+		}
+		return "";
+	}
+	
+	public String getLifestealText() {
+		if (lifesteal > 0) {
+			return "\nLifesteal: "+ lifesteal;
+		}
+		return " ";
+	}
+	
+	public String getCritText() {
+		if (crit > 0) {
+			return "\nCrit: "+ crit;
+		}
+		return " ";
+	}
+	
 	public String toString() {
 		return "You equip" + name + "already.";
 	}

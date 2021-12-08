@@ -1,7 +1,6 @@
 package Item;
 
 public class Heal extends Potion implements Usable{
-	private boolean isUsed;
 	private int heal;
 	
 	public Heal(String name,String description,int heal) {
@@ -13,9 +12,9 @@ public class Heal extends Potion implements Usable{
 		return heal;
 	}
 	
-	public int useItem(Player player) {
+	public int useItem(??? assignedCharacter) {
 		isUsed = true;
-		player.healPlayer(heal);
+		assignedCharacter.healPlayer(heal);
 		return heal;
 	}
 	

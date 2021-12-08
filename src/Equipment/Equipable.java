@@ -2,6 +2,6 @@ package Equipment;
 
 public interface Equipable {
 	
-	void equipItem(Player player);
+	void equipItem(??? assignedCharacter);
 	
 }
