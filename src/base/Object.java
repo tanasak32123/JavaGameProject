@@ -1,5 +1,6 @@
 package base;
 
-public class Object {
+public abstract class Object {
+	
 
 }
