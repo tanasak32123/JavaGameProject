@@ -1,6 +1,6 @@
 package character;
 
-public class BadData {
+public class GoodData {
 	
 	public String imageID;
     public String name;
@@ -13,7 +13,7 @@ public class BadData {
     public int skillManaUse;
     public int curMana ;
     
-    public BadData(final String[] data) {
+    public GoodData(final String[] data) {
         this.imageID = data[0];
         this.name = data[1];
         this.description = data[2];
