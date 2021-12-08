@@ -1,6 +1,6 @@
 package Equipment;
 
-public class Accessory extends Item{
+public class Accessory extends Item implements Equipable{
 	private int bonusDamage;
 	private int bonusCrit;
 	private int bonusPhysDef;
@@ -29,4 +29,44 @@ public class Accessory extends Item{
 	public int getBonusMagicDef() {
 		return bonusMagicDef;
 	}
+	
+	public void equipItem(??? assignedCharacter) {
+		assignedCharacter.increaseAttack(bonusDamage);
+		assignedCharacter.increaseCritical(bonusCrit);
+		assignedCharacter.increaseMagicDef(bonusMagicDef);
+		assignedCharacter.increasePhysDef(bonusPhysDef);
+	}
+	
+	public String getBonusDamageText() {
+		if (bonusDamage > 0) {
+			return "\nBonusDamage: "+ bonusDamage;
+		}
+		return "";
+	}
+	
+	public String getBonusCritText() {
+		if (bonusCrit > 0) {
+			return "\nBonusCrit: "+ bonusCrit;
+		}
+		return " ";
+	}
+	
+	public String getBonusPhysDefText() {
+		if (bonusPhysDef > 0) {
+			return "\nBonusPhysDef: "+ bonusPhysDef;
+		}
+		return " ";
+	}
+	
+	public String getBonusMagicDefText() {
+		if (bonusMagicDef > 0) {
+			return "\nBonusMagicDef: "+ bonusMagicDef;
+		}
+		return " ";	
+	}
+
+	public String toString() {
+		return "You equip" + name + "already.";
+	}
+
 }

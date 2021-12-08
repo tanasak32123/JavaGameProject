@@ -24,9 +24,14 @@ public class Weapon extends Item{
 		return crit;
 	}
 	
-	public void equipItem(Player player) {
-		player.increaseAttack(damage);
-		player.increaseLifesteal(lifesteal);
-		player.increaseCritical(crit);
+	public void equipItem(??? assignedCharacter) {
+		assignedCharacter.increaseAttack(damage);
+		assignedCharacter.increaseLifesteal(lifesteal);
+		assignedCharacter.increaseCritical(crit);
 	}
+	
+	public String toString() {
+		return "You equip" + name + "already.";
+	}
+	
 }

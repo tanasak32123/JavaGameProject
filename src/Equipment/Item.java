@@ -1,6 +1,6 @@
 package Equipment;
 
-public class Item {
+public abstract class Item {
 	protected String name;
 	protected String description;
 	
@@ -17,4 +17,5 @@ public class Item {
 		return description;
 	}
 
+	public abstract String toString();
 }
