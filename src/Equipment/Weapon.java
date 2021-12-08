@@ -1,5 +1,6 @@
+package Equipment;
 
-public class Weapon extends Equipment{
+public class Weapon extends Item{
 	private int damage;
 	private int lifesteal;
 	private int crit;
@@ -21,5 +22,11 @@ public class Weapon extends Equipment{
 
 	public int getCrit() {
 		return crit;
+	}
+	
+	public void equipItem(Player player) {
+		player.increaseAttack(damage);
+		player.increaseLifesteal(lifesteal);
+		player.increaseCritical(crit);
 	}
 }

@@ -1,5 +1,6 @@
+package Equipment;
 
-public class Accessory extends Equipment{
+public class Accessory extends Item{
 	private int bonusDamage;
 	private int bonusCrit;
 	private int bonusPhysDef;
