@@ -1,23 +1,22 @@
 package Equipment;
 
-public class Armor extends Item{
+public class Armor extends Equipment implements Equipable{
 	private int bonusDamage;
-	private int physDef;
-	private int magicDef;
+	private int defense;
 	
-	Armor(String name,String description,int bonusDamage,int physDef,int magicDef) {
+	public Armor() {
+		bonusDamage = 0;
+		defense = 0;
+	}
+	
+	public Armor(String name,String description,int bonusDamage,int defense) {
 		super(name,description);
 		this.bonusDamage = bonusDamage;
-		this.physDef = physDef;
-		this.magicDef = magicDef;
+		this.defense = defense;
 	}
 
-	public int getPhysDef() {
-		return physDef;
-	}
-
-	public int getMagicDef() {
-		return magicDef;
+	public int getDefense() {
+		return defense;
 	}
 
 	public int getBonusDamage() {
@@ -25,9 +24,10 @@ public class Armor extends Item{
 	}
 	
 	public void equipItem(??? assignedCharacter) {
-		assignedCharacter.increaseAttack(bonusDamage);
-		assignedCharacter.increasePhysDef(physDef);
-		assignedCharacter.increaseMagicDef(magicDef);
+		//set armor to character
+		//assignedCharacter.increaseAttack(bonusDamage);
+		//assignedCharacter.increaseDefense(defense);
+		assignedCharacter.setArmor(this);
 	}
 	
 	public String getBonusDamageText() {
@@ -37,16 +37,9 @@ public class Armor extends Item{
 		return "";
 	}
 	
-	public String getPhysDefText() {
-		if (physDef > 0) {
-			return "\nPhysDef: "+ physDef;
-		}
-		return " ";
-	}
-	
-	public String getMagicDefText() {
-		if (magicDef > 0) {
-			return "\nMagicDef: "+ magicDef;
+	public String getDefenseText() {
+		if (defense > 0) {
+			return "\nDefense: "+ defense;
 		}
 		return " ";
 	}

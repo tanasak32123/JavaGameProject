@@ -1,4 +1,4 @@
-package Item;
+package Potion;
 
 public interface Usable {
 	

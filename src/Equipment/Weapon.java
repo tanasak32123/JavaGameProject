@@ -1,11 +1,17 @@
 package Equipment;
 
-public class Weapon extends Item{
+public class Weapon extends Equipment implements Equipable{
 	private int damage;
 	private int lifesteal;
 	private int crit;
 	
-	Weapon(String name,String description,int damage,int lifesteal,int crit) {
+	public Weapon() {
+		damage = 0;
+		lifesteal = 0;
+		crit = 0;
+	}
+	
+	public Weapon(String name,String description,int damage,int lifesteal,int crit) {
 		super(name,description);
 		this.damage = damage;
 		this.lifesteal = lifesteal;
@@ -25,9 +31,11 @@ public class Weapon extends Item{
 	}
 	
 	public void equipItem(??? assignedCharacter) {
-		assignedCharacter.increaseAttack(damage);
-		assignedCharacter.increaseLifesteal(lifesteal);
-		assignedCharacter.increaseCritical(crit);
+		//set weapon to character 
+		//assignedCharacter.increaseAttack(damage);
+		//assignedCharacter.increaseLifesteal(lifesteal);
+		//assignedCharacter.increaseCritical(crit);
+		assignedCharacter.setWeapon(this);
 	}
 	
 	public String getDamageText() {
@@ -46,7 +54,7 @@ public class Weapon extends Item{
 	
 	public String getCritText() {
 		if (crit > 0) {
-			return "\nCrit: "+ crit;
+			return "\nCritical: "+ crit + " %";
 		}
 		return " ";
 	}

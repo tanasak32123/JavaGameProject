@@ -1,4 +1,4 @@
-package Item;
+package Potion;
 
 public class Heal extends Potion implements Usable{
 	private int heal;

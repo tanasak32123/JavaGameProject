@@ -1,4 +1,4 @@
-package Item;
+package Potion;
 
 public class Mana extends Potion implements Usable{
 	private int mana;

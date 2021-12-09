@@ -1,17 +1,21 @@
 package Equipment;
 
-public class Accessory extends Item implements Equipable{
+public class Accessory extends Equipment implements Equipable{
 	private int bonusDamage;
 	private int bonusCrit;
-	private int bonusPhysDef;
-	private int bonusMagicDef;
+	private int bonusDefense;
 	
-	Accessory(String name,String description,int bonusDamage,int bonusCrit,int bonusPhysDef,int bonusPhysMagic) {
+	public Accessory() {
+		bonusDamage = 0;
+		bonusCrit = 0;
+		bonusDefense = 0;
+	}
+	
+	public Accessory(String name,String description,int bonusDamage,int bonusCrit,int bonusDefense) {
 		super(name,description);
 		this.bonusDamage = bonusDamage;
 		this.bonusCrit = bonusCrit;
-		this.bonusDamage = bonusDamage;
-		this.bonusPhysDef = bonusPhysDef;
+		this.bonusDefense = bonusDefense;
 	}
 
 	public int getBonusDamage() {
@@ -22,19 +26,16 @@ public class Accessory extends Item implements Equipable{
 		return bonusCrit;
 	}
 
-	public int getBonusPhysDef() {
-		return bonusPhysDef;
-	}
-
-	public int getBonusMagicDef() {
-		return bonusMagicDef;
+	public int getBonusDefense() {
+		return bonusDefense;
 	}
 	
 	public void equipItem(??? assignedCharacter) {
-		assignedCharacter.increaseAttack(bonusDamage);
-		assignedCharacter.increaseCritical(bonusCrit);
-		assignedCharacter.increaseMagicDef(bonusMagicDef);
-		assignedCharacter.increasePhysDef(bonusPhysDef);
+		// set accessory to character
+		//assignedCharacter.increaseAttack(bonusDamage);
+		//assignedCharacter.increaseCritical(bonusCrit);
+		//assignedCharacter.increaseDefense(bonusDefense);
+		assignedCharacter.setAccessory(this);
 	}
 	
 	public String getBonusDamageText() {
@@ -46,25 +47,18 @@ public class Accessory extends Item implements Equipable{
 	
 	public String getBonusCritText() {
 		if (bonusCrit > 0) {
-			return "\nBonusCrit: "+ bonusCrit;
+			return "\nBonusCrit: "+ bonusCrit + " %";
 		}
 		return " ";
 	}
 	
-	public String getBonusPhysDefText() {
-		if (bonusPhysDef > 0) {
-			return "\nBonusPhysDef: "+ bonusPhysDef;
+	public String getBonusDefenseText() {
+		if (bonusDefense > 0) {
+			return "\nBonusDefense: "+ bonusDefense;
 		}
 		return " ";
 	}
 	
-	public String getBonusMagicDefText() {
-		if (bonusMagicDef > 0) {
-			return "\nBonusMagicDef: "+ bonusMagicDef;
-		}
-		return " ";	
-	}
-
 	public String toString() {
 		return "You equip" + name + "already.";
 	}

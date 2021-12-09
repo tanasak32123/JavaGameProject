@@ -1,4 +1,4 @@
-package Item;
+package Potion;
 
 public abstract class Potion {
 	protected String name;

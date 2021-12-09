@@ -1,10 +1,15 @@
 package Equipment;
 
-public abstract class Item {
+public abstract class Equipment {
 	protected String name;
 	protected String description;
 	
-	Item(String name,String description) {
+	public Equipment() {
+		name = "";
+		description = "";
+	}
+	
+	public Equipment(String name,String description) {
 		this.name = name;
 		this.description = description;
 	}
@@ -16,6 +21,7 @@ public abstract class Item {
 	public String getDescription() {
 		return description;
 	}
-
+	
 	public abstract String toString();
+	
 }
