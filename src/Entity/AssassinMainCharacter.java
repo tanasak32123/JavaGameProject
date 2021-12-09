@@ -11,7 +11,7 @@ public class AssassinMainCharacter extends MainCharacter {
 	}
 	
 	public void attackTarget(Character chooseCharacter) {
-		
+		setCurrentHp(currentHp - ((MainCharacter) chooseCharacter).getAtk());
 	}
 	
 }

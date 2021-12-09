@@ -6,7 +6,7 @@ public abstract class MainCharacter extends Character{
 	protected int crit;
 	protected int mana;
 	protected int maxMana;
-	protected int hp;
+	protected int currentHp;
 	protected int maxHp;
 	
 	public MainCharacter(String name, String description,int atk,int def,int crit,int mana,int hp) {
@@ -16,8 +16,8 @@ public abstract class MainCharacter extends Character{
 		this.crit = crit;
 		this.mana = mana;
 		this.maxMana = mana;
-		this.hp = crit;
-		this.mana = mana;
+		this.currentHp = hp;
+		this.maxHp = hp;
 	}
 	
 	public abstract void useSkill(Character chooseCharacter);
@@ -64,12 +64,12 @@ public abstract class MainCharacter extends Character{
 		this.maxMana = maxMana;
 	}
 
-	public int getHp() {
-		return hp;
+	public int getCurrentHp() {
+		return currentHp;
 	}
 
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setCurrentHp(int hp) {
+		this.currentHp = hp;
 	}
 
 	public int getMaxHp() {
