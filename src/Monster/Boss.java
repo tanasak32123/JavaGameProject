@@ -1,5 +1,8 @@
 package Monster;
 
-public class Boss {
+import entity.Monster;
+
+public class Boss extends Monster {
+	
 
 }
