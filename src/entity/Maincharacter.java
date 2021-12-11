@@ -4,17 +4,39 @@ public abstract class Maincharacter {
 	
 	protected String name;
     protected String description;
-    protected int health;
-    protected int maxHealth;
-    protected int mana;
-    protected int maxMana;
-    protected int attack;
-    protected int defense ;
+    protected double health;
+    protected double maxHealth;
+    protected double mana;
+    protected double maxMana;
+    protected double attack;
+    protected double defense ;
     protected PlayType type ;
     
+    
     public Maincharacter() {
-    	
+    	setName("UnKnow") ;
+    	this.description ="UnKnow";
+		this.health =0;
+		this.maxHealth = 0;
+		this.mana = 0;
+		this.maxMana = 0;
+		this.attack = 0;
+		this.defense = 0;
+    	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
     }
+
+	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
+			double defense) {
+		this.name = name;
+		this.description = description;
+		this.health = health;
+		this.maxHealth = maxHealth;
+		this.mana = mana;
+		this.maxMana = maxMana;
+		this.attack = attack;
+		this.defense = defense;
+		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
+	}
 
 	public String getName() {
 		return name;
@@ -32,51 +54,51 @@ public abstract class Maincharacter {
 		this.description = description;
 	}
 
-	public int getHealth() {
+	public double getHealth() {
 		return health;
 	}
 
-	public void setHealth(int health) {
+	public void setHealth(double health) {
 		this.health = health;
 	}
 
-	public int getMaxHealth() {
+	public double getMaxHealth() {
 		return maxHealth;
 	}
 
-	public void setMaxHealth(int maxHealth) {
+	public void setMaxHealth(double maxHealth) {
 		this.maxHealth = maxHealth;
 	}
 
-	public int getMana() {
+	public double getMana() {
 		return mana;
 	}
 
-	public void setMana(int mana) {
+	public void setMana(double mana) {
 		this.mana = mana;
 	}
 
-	public int getMaxMana() {
+	public double getMaxMana() {
 		return maxMana;
 	}
 
-	public void setMaxMana(int maxMana) {
+	public void setMaxMana(double maxMana) {
 		this.maxMana = maxMana;
 	}
 
-	public int getAttack() {
+	public double getAttack() {
 		return attack;
 	}
 
-	public void setAttack(int attack) {
+	public void setAttack(double attack) {
 		this.attack = attack;
 	}
 
-	public int getDefense() {
+	public double getDefense() {
 		return defense;
 	}
 
-	public void setDefense(int defense) {
+	public void setDefense(double defense) {
 		this.defense = defense;
 	}
 
@@ -88,5 +110,8 @@ public abstract class Maincharacter {
 		this.type = type;
 	}
     
+	public static double condi (int level) {
+		return Math.pow(1.2, level-1) ;
+	}
     
 }
