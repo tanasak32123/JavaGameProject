@@ -1,5 +1,7 @@
 package Equipment;
 
+import Entity.MainCharacter;
+
 public class Armor extends Equipment implements Equipable{
 	private int bonusDamage;
 	private int defense;
@@ -9,8 +11,8 @@ public class Armor extends Equipment implements Equipable{
 		defense = 0;
 	}
 	
-	public Armor(String name,String description,int bonusDamage,int defense) {
-		super(name,description);
+	public Armor(String name,String description,int price,int bonusDamage,int defense) {
+		super(name,description,price);
 		this.bonusDamage = bonusDamage;
 		this.defense = defense;
 	}
@@ -23,11 +25,10 @@ public class Armor extends Equipment implements Equipable{
 		return bonusDamage;
 	}
 	
-	public void equipItem(??? assignedCharacter) {
+	public void equipItem(MainCharacter selectedCharacter) {
 		//set armor to character
-		//assignedCharacter.increaseAttack(bonusDamage);
-		//assignedCharacter.increaseDefense(defense);
-		assignedCharacter.setArmor(this);
+		selectedCharacter.setAtk(selectedCharacter.getAtk() + (bonusDamage - selectedCharacter.getArmor().getBonusDamage()));
+		selectedCharacter.setDef(selectedCharacter.getDef() + (defense - selectedCharacter.getArmor().getDefense()));
 	}
 	
 	public String getBonusDamageText() {

@@ -1,10 +1,12 @@
 package Potion;
 
+import Entity.MainCharacter;
+
 public class Mana extends Potion implements Usable{
 	private int mana;
 	
-	public Mana(String name, String description,int mana) {
-		super(name,description);
+	public Mana(String name, String description,int price,int mana) {
+		super(name,description,price);
 		this.mana = mana;
 	}
 
@@ -12,10 +14,8 @@ public class Mana extends Potion implements Usable{
 		return mana;
 	}
 	
-	public int useItem(??? assignedCharacter) {
-		isUsed = true;
-		assignedCharacter.refillMana(mana);
-		return mana;
+	public void useItem(MainCharacter selectedCharacter) {
+		selectedCharacter.setCurrentMana(selectedCharacter.getCurrentMana() + mana);
 	}
 	
 	public String toString() {

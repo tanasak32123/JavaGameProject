@@ -4,7 +4,7 @@ public abstract class MainCharacter extends Character{
 	protected int atk;
 	protected int def;
 	protected int crit;
-	protected int mana;
+	protected int currentMana;
 	protected int maxMana;
 	protected int currentHp;
 	protected int maxHp;
@@ -14,7 +14,7 @@ public abstract class MainCharacter extends Character{
 		this.atk = atk;
 		this.def = def;
 		this.crit = crit;
-		this.mana = mana;
+		this.currentMana = mana;
 		this.maxMana = mana;
 		this.currentHp = hp;
 		this.maxHp = hp;
@@ -48,12 +48,12 @@ public abstract class MainCharacter extends Character{
 		this.crit = crit;
 	}
 
-	public int getMana() {
-		return mana;
+	public int getCurrentMana() {
+		return currentMana;
 	}
 
-	public void setMana(int mana) {
-		this.mana = mana;
+	public void setCurrentMana(int mana) {
+		this.currentMana = mana;
 	}
 
 	public int getMaxMana() {
@@ -79,7 +79,5 @@ public abstract class MainCharacter extends Character{
 	public void setMaxHp(int maxHp) {
 		this.maxHp = maxHp;
 	}
-	
-	
 	
 }

@@ -3,20 +3,12 @@ package Potion;
 public abstract class Potion {
 	protected String name;
 	protected String description;
-	protected boolean isUsed;
+	protected int price;
 	
-	Potion(String name, String description) {
+	Potion(String name, String description,int price) {
 		this.name = name;
 		this.description = description;
-		isUsed = false;
-	}
-
-	public boolean isUsed() {
-		return isUsed;
-	}
-
-	public void setUsed(boolean isUsed) {
-		this.isUsed = isUsed;
+		this.price = price;
 	}
 
 	public String getName() {

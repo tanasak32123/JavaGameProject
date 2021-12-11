@@ -1,5 +1,7 @@
 package Equipment;
 
+import Entity.MainCharacter;
+
 public class Weapon extends Equipment implements Equipable{
 	private int damage;
 	private int lifesteal;
@@ -11,8 +13,8 @@ public class Weapon extends Equipment implements Equipable{
 		crit = 0;
 	}
 	
-	public Weapon(String name,String description,int damage,int lifesteal,int crit) {
-		super(name,description);
+	public Weapon(String name,String description,int price,int damage,int lifesteal,int crit) {
+		super(name,description,price);
 		this.damage = damage;
 		this.lifesteal = lifesteal;
 		this.crit = crit;
@@ -30,12 +32,11 @@ public class Weapon extends Equipment implements Equipable{
 		return crit;
 	}
 	
-	public void equipItem(??? assignedCharacter) {
+	public void equipItem(MainCharacter selectedCharacter) {
 		//set weapon to character 
-		//assignedCharacter.increaseAttack(damage);
-		//assignedCharacter.increaseLifesteal(lifesteal);
-		//assignedCharacter.increaseCritical(crit);
-		assignedCharacter.setWeapon(this);
+		selectedCharacter.setAtk(selectedCharacter.getAtk() + (damage - selectedCharacter.getWeapon().getDamage()));
+		selectedCharacter.setLifesteal(selectedCharacter.getLifesteal() + (lifesteal - selectedCharacter.getWeapon().getLifesteal()));
+		selectedCharacter.setCrit(selectedCharacter.getCrit() + (crit - selectedCharacter.getWeapon().getCrit()));
 	}
 	
 	public String getDamageText() {
