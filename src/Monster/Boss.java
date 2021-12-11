@@ -5,8 +5,8 @@ import javafx.scene.control.ProgressBar;
 
 public class Boss extends Monster {
 
-	public Boss(ProgressBar healthBar, int level) {
-		super(healthBar, level);
+	public Boss(int level) {
+		super(, level);
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -28,15 +28,6 @@ public class Assasin extends Player {
 		
 	}
 	
-	public void leveup() {
-		setAttack(getAttack()*1.2);
-		setDefense(getDefense()*1.2);
-		setHealth(getHealth()*1.2);
-		setMaxHealth(getMaxHealth()*1.2);
-		setMaxMana(getMaxMana()*1.2);
-		setMana(getMaxMana());
-		setLevel(getLevel()+1);
-	}
 	
 	
 	
