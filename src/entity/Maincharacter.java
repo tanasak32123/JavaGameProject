@@ -1,6 +1,6 @@
 package entity;
 
-public class Maincharacter {
+public abstract class Maincharacter {
 	
 	protected String name;
     protected String description;
