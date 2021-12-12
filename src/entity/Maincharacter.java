@@ -114,6 +114,7 @@ public abstract class Maincharacter {
 		return Math.pow(1.2, level-1) ;
 	}
 	
-	///public abstract boolean skill1 (int s)  ;
+	public abstract boolean skill1 (Monster mons,Player play)  ;
+	public abstract boolean skill2 (Monster mons,Player play)  ;
     
 }

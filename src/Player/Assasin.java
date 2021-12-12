@@ -15,16 +15,18 @@ public class Assasin extends Player {
 	}
 	
 
-	public boolean skill1(Monster mons) {// µ’∑–≈ÿ‡°√“– damage
+	@Override
+	public boolean skill1(Monster mons, Player play) {
 		if (getMana() < 50)
 			return false;
 		setMana(getMana() - 50);
 		mons.setHealth(mons.getHealth() - this.getAttack());
 		return true;
-
 	}
 
-	public boolean skill2(Monster mons) { //µ’∏√√¡¥“¡’‚Õ°“ µ‘¥§√‘25%
+
+	@Override
+	public boolean skill2(Monster mons, Player play) {
 		if (getMana()<10) return false ;
 		int ran = (int) Math.random()*3 ;
 		double damage ;
@@ -34,7 +36,6 @@ public class Assasin extends Player {
 			damage = Math.max(0,this.getAttack()-mons.getDefense()) ;
 		}mons.setHealth(getHealth()-damage);
 		return true ;
-		
 	}
 
 	

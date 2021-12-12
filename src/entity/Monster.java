@@ -2,7 +2,7 @@ package entity;
 
 import javafx.scene.control.ProgressBar;
 
-public class Monster extends Maincharacter {
+public abstract class Monster extends Maincharacter {
 	private ProgressBar healthBar;
 	private int level;
 
@@ -49,6 +49,18 @@ public class Monster extends Maincharacter {
 			return 1;
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean skill1(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean skill2(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -11,12 +11,17 @@ public class Boss extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean skill1 (Player play) {
-		if (getMana()<50) return false ;
-		
-		return true ;
+	@Override
+	public boolean skill1(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
+
+	@Override
+	public boolean skill2(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 

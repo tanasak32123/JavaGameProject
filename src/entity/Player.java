@@ -4,7 +4,6 @@ import javafx.scene.control.ProgressBar;
 
 public abstract class Player extends Maincharacter {
 	private ProgressBar healthBar;
-	private int money ;
 	private int level ;
 	
 	
@@ -66,9 +65,19 @@ public abstract class Player extends Maincharacter {
 			return 1;
 		}
 		return 0;
-	}
+	};
 	
-	//public abstract boolean skill1 () ;
+	@Override
+	public boolean skill1(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean skill2(Monster mons, Player play) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }
 
