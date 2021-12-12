@@ -10,7 +10,7 @@ public abstract class Player extends Maincharacter {
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
 			double defense,int level) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense) ;
-		this.money = 0;
+
 		this.level = level;
 	}
 
@@ -24,15 +24,6 @@ public abstract class Player extends Maincharacter {
 		this.healthBar = healthBar;
 	}
 
-
-	public int getMoney() {
-		return money;
-	}
-
-
-	public void setMoney(int money) {
-		this.money = money;
-	}
 
 
 	public int getLevel() {
