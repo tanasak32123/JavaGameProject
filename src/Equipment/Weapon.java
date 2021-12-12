@@ -63,5 +63,5 @@ public class Weapon extends Equipment implements Equipable{
 	public String toString() {
 		return "You equip" + name + "already.";
 	}
-	
+
 }
