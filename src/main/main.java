@@ -32,7 +32,7 @@ public class main extends Application{
 		
 		root.setPrefSize(1050, 600);
 		
-		try(InputStream is = Files.newInputStream(Paths.get("res/55.jpg"))){
+		try(InputStream is = Files.newInputStream(Paths.get("res/1-4-1024x576.jpg"))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1050);
 			img.setFitHeight(600);
@@ -47,13 +47,10 @@ public class main extends Application{
 		title.setTranslateY(100);
 		
 		MenuBox vbox = new MenuBox(
-				new MenuItem("CONTINUE [ONLINE]"),
-				new MenuItem("CONTINUE [OFFLINE]"),
-				new MenuItem("NEW GAME"),
-				new MenuItem("JOIN CO-OP"),	
-				new MenuItem("UPLAY"));
-		vbox.setTranslateX(100);
-		vbox.setTranslateY(300);
+				new MenuItem("PLAY"),
+				new MenuItem("EXIT"));
+		vbox.setTranslateX(420);
+		vbox.setTranslateY(350);
 		
 		root.getChildren().addAll(title,vbox);
 		
@@ -63,7 +60,7 @@ public class main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		Scene scene = new Scene(createContent());
-		primaryStage.setTitle("VIDEO GAME");
+		primaryStage.setTitle("POD AND NOON");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -76,7 +73,7 @@ public class main extends Application{
 			bg.setFill(null);
 			
 			Text text = new Text(name);
-			text.setFill(Color.WHITE);
+			text.setFill(Color.LIGHTBLUE);
 			text.setFont(Font.font("Comic Sans MS", FontWeight.BLACK, 50));
 			
 			setAlignment(Pos.CENTER);
@@ -118,7 +115,7 @@ public class main extends Application{
 			
 			Text text = new Text(name);
 			text.setFill(Color.DARKGREY);
-			text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD,20));
+			text.setFont(Font.font("Comic Sans MS", FontWeight.SEMI_BOLD,20));
 			
 			setAlignment(Pos.CENTER);
 			getChildren().addAll(bg, text);

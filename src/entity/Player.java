@@ -2,7 +2,7 @@ package entity;
 
 import javafx.scene.control.ProgressBar;
 
-public class Player extends Maincharacter {
+public abstract class Player extends Maincharacter {
 	private ProgressBar healthBar;
 	private int money ;
 	private int level ;
@@ -68,6 +68,7 @@ public class Player extends Maincharacter {
 		return 0;
 	}
 	
+	//public abstract boolean skill1 () ;
 	
 }
 

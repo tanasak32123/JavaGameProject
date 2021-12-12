@@ -113,5 +113,7 @@ public abstract class Maincharacter {
 	public static double condi (int level) {
 		return Math.pow(1.2, level-1) ;
 	}
+	
+	///public abstract boolean skill1 (int s)  ;
     
 }

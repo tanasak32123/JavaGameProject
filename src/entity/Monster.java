@@ -9,7 +9,7 @@ public class Monster extends Maincharacter {
 	public Monster(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense, int level) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
-		this.level = level;
+		setLevel(level);
 	}
 
 	public ProgressBar getHealthBar() {
