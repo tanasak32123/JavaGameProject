@@ -1,6 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+||||||| merged common ancestors
+<<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> 2067909424ec6a40138505851af463c12f6f509b
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Project</name>
 	<comment></comment>
 	<projects>
@@ -21,6 +27,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>Project_Progmeth_2021</name>
+||||||| merged common ancestors
+	<name>Project_Progmeth_2021</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -35,4 +43,35 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
+||||||||| empty tree
+=========
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Project</name>
+=======
+<<<<<<< HEAD
+	<name>Project_Progmeth_2021</name>
+=======
+	<name>Project</name>
+>>>>>>> noon
+>>>>>>> 2067909424ec6a40138505851af463c12f6f509b
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>
+<<<<<<< HEAD
 >>>>>>> origin/pod
+||||||| merged common ancestors
+>>>>>>>>> Temporary merge branch 2
+=======
+>>>>>>> 2067909424ec6a40138505851af463c12f6f509b
