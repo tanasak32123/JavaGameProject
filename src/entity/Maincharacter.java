@@ -1,5 +1,9 @@
 package entity;
 
+import javax.lang.model.type.NullType;
+
+import javafx.scene.image.Image;
+
 public abstract class Maincharacter {
 	
 	protected String name;
@@ -11,6 +15,7 @@ public abstract class Maincharacter {
     protected double attack;
     protected double defense ;
     protected PlayType type ;
+    protected String image ;
     
     
     public Maincharacter() {
@@ -22,11 +27,12 @@ public abstract class Maincharacter {
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
+		this.image =  "UNKnow" ;
     	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
     }
 
 	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
-			double defense) {
+			double defense,String image) {
 		this.name = name;
 		this.description = description;
 		this.health = health;
@@ -36,6 +42,15 @@ public abstract class Maincharacter {
 		this.attack = attack;
 		this.defense = defense;
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
+		setImage(image);
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image2) {
+		this.image = image2;
 	}
 
 	public String getName() {
@@ -117,4 +132,5 @@ public abstract class Maincharacter {
 	public abstract boolean skill1 (Monster mons,Player play)  ;
 	public abstract boolean skill2 (Monster mons,Player play)  ;
     
+	
 }

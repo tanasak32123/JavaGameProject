@@ -25,18 +25,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class MainMenu {
 
-	private Parent createContent() {
-		Pane root = new Pane();
-		
-		root.setPrefSize(1050, 600);
+public class MainMenu extends Pane {
+	
+
+	public MainMenu () {
+		this.setPrefSize(1050, 600);
 		
 		try(InputStream is = Files.newInputStream(Paths.get("res/1-4-1024x576.jpg"))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1050);
 			img.setFitHeight(600);
-			root.getChildren().add(img);
+			this.getChildren().add(img);
 		}
 		catch(IOException e) {
 			System.out.println("Couldn't load image");
@@ -52,12 +52,12 @@ public class MainMenu {
 		vbox.setTranslateX(420);
 		vbox.setTranslateY(350);
 		
-		root.getChildren().addAll(title,vbox);
-		
-		return root;
-		
+		this.getChildren().addAll(title,vbox);
 	}
 	
+	
+	
+
 	private static class Title extends StackPane{
 		public Title(String name) {
 			Rectangle bg = new Rectangle(375, 60);

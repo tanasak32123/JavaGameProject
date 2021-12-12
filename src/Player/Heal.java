@@ -7,7 +7,7 @@ public class Heal extends Player {
 
 	public Heal(int level) {
 		super("Heal", "Suppurt your team", 140 * condi(level), 140 * condi(level), 140 * condi(level), 140 * condi(level),
-				10 * condi(level), 60 * condi(level), level);
+				10 * condi(level), 60 * condi(level), level,"res/healer.png");
 		// TODO Auto-generated constructor stub
 	}
 

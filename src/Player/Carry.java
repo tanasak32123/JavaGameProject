@@ -4,10 +4,10 @@ import entity.Monster;
 import entity.Player;
 
 public class Carry extends Player {
-	
-	
+
 	public Carry(int level) {
-		super("Carry","Have a lot of damge,but low Hp and def.",70*condi(level),70*condi(level),120*condi(level),120*condi(level),120*condi(level),30*condi(level),level);
+		super("Carry", "Have a lot of damge,but low Hp and def.", 70 * condi(level), 70 * condi(level),
+				120 * condi(level), 120 * condi(level), 120 * condi(level), 30 * condi(level), level,"res/carry.png");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -22,8 +22,5 @@ public class Carry extends Player {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
 
 }

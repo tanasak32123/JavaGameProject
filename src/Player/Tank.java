@@ -7,7 +7,7 @@ public class Tank extends Player {
 
 	public Tank(int level) {
 		super("Tank", "Big dady",120* condi(level), 120 * condi(level), 100 * condi(level),
-				100 * condi(level), 20 * condi(level), 120 * condi(level), level);
+				100 * condi(level), 20 * condi(level), 120 * condi(level), level,"res/tank.png");
 	}
 
 	@Override

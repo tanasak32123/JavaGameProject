@@ -3,14 +3,16 @@ package Player;
 import entity.Monster;
 import entity.Player;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 
 public class Assasin extends Player {
 	private boolean isAlive;
 	private boolean isActive;
-
+	
+	
 	public Assasin(int level) {
 		super("Assasin", "Have a lot of damge,but low Hp.", 40 * condi(level), 40 * condi(level), 100 * condi(level),
-				100 * condi(level), 100 * condi(level), 70 * condi(level), level);
+				100 * condi(level), 100 * condi(level), 70 * condi(level), level,"res/assassin3.png");
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -37,6 +39,8 @@ public class Assasin extends Player {
 		}mons.setHealth(getHealth()-damage);
 		return true ;
 	}
+	
+	
 
 	
 }

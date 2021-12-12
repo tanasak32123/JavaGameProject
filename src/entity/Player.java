@@ -1,6 +1,7 @@
 package entity;
 
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 
 public abstract class Player extends Maincharacter {
 	private ProgressBar healthBar;
@@ -8,8 +9,8 @@ public abstract class Player extends Maincharacter {
 	
 	
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
-			double defense,int level) {
-		super(name, description, health, maxHealth, mana, maxMana, attack, defense) ;
+			double defense,int level,String image) {
+		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image) ;
 
 		this.level = level;
 	}
