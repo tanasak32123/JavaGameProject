@@ -24,7 +24,7 @@ public class Fighting extends Pane  {
 		}
 	}
 	
-	private static class Title Extends 
+	private static class Title 
 	
 	
 

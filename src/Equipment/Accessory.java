@@ -1,6 +1,6 @@
 package Equipment;
 
-import Entity.MainCharacter;
+import entity.Maincharacter;
 
 public class Accessory extends Equipment implements Equipable{
 	private int bonusDamage;
@@ -32,9 +32,9 @@ public class Accessory extends Equipment implements Equipable{
 		return bonusDefense;
 	}
 	
-	public void equipItem(MainCharacter selectedCharacter) {
+	public void equipItem(Maincharacter selectedCharacter) {
 		// set accessory to character
-		selectedCharacter.setAtk(selectedCharacter.getAtk() + (bonusDamage - selectedCharacter.getAcessory().getBonusDamage()));
+		selectedCharacter.setAtk(selectedCharacter.getAttack() + (bonusDamage - selectedCharacter.getAcessory().getBonusDamage()));
 		selectedCharacter.setCrit(selectedCharacter.getCrit() + (bonusCrit - selectedCharacter.getAcessory().getBonusCrit()));
 		selectedCharacter.setDef(selectedCharacter.getDef() + (bonusDefense - selectedCharacter.getAcessory().getBonusDefense()));
 	}

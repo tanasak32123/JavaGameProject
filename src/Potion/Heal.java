@@ -1,6 +1,6 @@
 package Potion;
 
-import Entity.MainCharacter;
+import entity.MainCharacter;
 
 public class Heal extends Potion implements Usable{
 	private int heal;
