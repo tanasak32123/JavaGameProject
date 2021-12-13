@@ -1,33 +1,33 @@
 package entity;
 
 public class Maincharacter {
-	
+
 	protected String name;
-    protected String description;
-    protected double health;
-    protected double maxHealth;
-    protected double mana;
-    protected double maxMana;
-    protected double attack;
-    protected double defense ;
-    protected PlayType type ;
-    protected boolean isAlive;
-    
-    public Maincharacter() {
-    	setName("Unknown") ;
-    	this.description ="Unknown";
-		this.health =0;
+	protected String description;
+	protected double health;
+	protected double maxHealth;
+	protected double mana;
+	protected double maxMana;
+	protected double attack;
+	protected double defense;
+	protected PlayType type;
+	protected boolean isAlive;
+
+	public Maincharacter() {
+		setName("Unknown");
+		this.description = "Unknown";
+		this.health = 0;
 		this.maxHealth = 0;
 		this.mana = 0;
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
 		isAlive = false;
-    	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
-    }
+		setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
+	}
 
-	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
-			double defense) {
+	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana,
+			double attack, double defense) {
 		this.name = name;
 		this.description = description;
 		this.health = health;
@@ -39,20 +39,20 @@ public class Maincharacter {
 		isAlive = true;
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
 	}
-	
-	public boolean isAlive() {
-		return isAlive;
-	}
-
-	public void setAlive(boolean isAlive) {
-		this.isAlive = isAlive;
-	}
 
 	public void updateIsAlive() {
 		if (health > 0) {
 			isAlive = true;
 		}
 		isAlive = false;
+	}
+
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 
 	public String getName() {
@@ -77,9 +77,12 @@ public class Maincharacter {
 
 	public void setHealth(double health) {
 		if (health < maxHealth) {
+			if (health < 0) {
+				this.health = 0;
+			}
 			this.health = health;
-		}
-		this.health = maxHealth;
+		} else
+			this.health = maxHealth;
 	}
 
 	public double getMaxHealth() {
@@ -132,9 +135,9 @@ public class Maincharacter {
 	public void setType(PlayType type) {
 		this.type = type;
 	}
-    
-	public static double condi (int level) {
-		return Math.pow(1.2, level-1) ;
+
+	public static double condi(int level) {
+		return Math.pow(1.2, level - 1);
 	}
-	
+
 }

@@ -4,19 +4,26 @@ import java.util.ArrayList;
 
 import Player.Assassin;
 import Player.Tank;
+import Potion.HealPotion;
+import Potion.ManaPotion;
 import Potion.Potion;
 import entity.Player;
 
 public class GamePlay {
 
-	protected static ArrayList<Player> myChar;
-	protected static ArrayList<Potion> myPotion;
-	protected static int money;
+	public static ArrayList<Player> myChar;
+	public static ArrayList<Potion> myPotion;
+	public static int money;
+	public static int healPotion;
+	public static int manaPotion;
 
 	public GamePlay() {
 		myChar = new ArrayList<>();
 		myPotion = new ArrayList<>();
 		money = 0;
+		healPotion = 1;
+		manaPotion = 0;
+		myPotion.add(new HealPotion());
 	}
 
 	public void addCharacter(Player player) {
@@ -27,7 +34,7 @@ public class GamePlay {
 		myPotion.add(potion);
 	}
 
-	public void updateCharacter() {
+	public static void updateCharacter() {
 		for (Player player : myChar) {
 			if (player instanceof Tank) {
 				((Tank) player).updateIsArmor();
@@ -35,7 +42,38 @@ public class GamePlay {
 			if (player instanceof Assassin) {
 				((Assassin) player).updateIsCheer();
 			}
+			player.updateIsAlive();
+			if (!player.isAlive()) {
+				//do something when character die
+				
+				
+				
+				//
+			}
 		}
+	}
+	
+	public static void updatePotion() {
+		int healPotion = 0;
+		int manaPotion = 0;
+		for (Potion potion : myPotion) {
+			if (potion instanceof HealPotion) {
+				healPotion += 1;
+			}
+			if (potion instanceof ManaPotion) {
+				manaPotion += 1;
+			}
+		}
+		GamePlay.healPotion = healPotion;
+		GamePlay.manaPotion = manaPotion;
+	}
+
+	public static int getHealPotion() {
+		return healPotion;
+	}
+
+	public static int getManaPotion() {
+		return manaPotion;
 	}
 
 	public static int getMoney() {
