@@ -11,17 +11,18 @@ public class Maincharacter {
     protected double attack;
     protected double defense ;
     protected PlayType type ;
-    
+    protected boolean isAlive;
     
     public Maincharacter() {
-    	setName("UnKnow") ;
-    	this.description ="UnKnow";
+    	setName("Unknown") ;
+    	this.description ="Unknown";
 		this.health =0;
 		this.maxHealth = 0;
 		this.mana = 0;
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
+		isAlive = false;
     	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
     }
 
@@ -35,7 +36,23 @@ public class Maincharacter {
 		this.maxMana = maxMana;
 		this.attack = attack;
 		this.defense = defense;
+		isAlive = true;
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
+	}
+	
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	public void updateIsAlive() {
+		if (health > 0) {
+			isAlive = true;
+		}
+		isAlive = false;
 	}
 
 	public String getName() {

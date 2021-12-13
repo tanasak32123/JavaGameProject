@@ -11,7 +11,7 @@ public abstract class Player extends Maincharacter {
 	private Armor armor;
 	private Accessory accessory;
 	private ProgressBar healthBar;
-	private int level;
+	protected int level;
 
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense, int level) {
@@ -94,8 +94,8 @@ public abstract class Player extends Maincharacter {
 		return 0;
 	};
 
-	public abstract boolean useSkill1(Monster mons, Player play);
+	public abstract void useSkill1(Object o1);
 
-	public abstract boolean useSkill2(Monster mons, Player play);
+	public abstract void useSkill2(Object o1);
 
 }
