@@ -3,7 +3,7 @@ package Potion;
 
 import entity.Maincharacter;
 
-public abstract class ManaPotion extends Potion implements Usable{
+public  class ManaPotion extends Potion implements Usable{
 	private int mana;
 	
 	public ManaPotion(String name, String description,int price,int mana) {

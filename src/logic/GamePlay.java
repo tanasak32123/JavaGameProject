@@ -13,6 +13,27 @@ public class GamePlay {
 	
 	
 	
+	public static ArrayList<Player> getMyChar() {
+		return myChar;
+	}
+	public static void setMyChar(ArrayList<Player> myChar) {
+		GamePlay.myChar = myChar;
+	}
+	public static int getMoney() {
+		return money;
+	}
+	public static void setMoney(int money) {
+		GamePlay.money = money;
+	}
+	public static ArrayList<Potion> getMyPotion() {
+		return myPotion;
+	}
+	public static void setMyPotion(ArrayList<Potion> myPotion) {
+		GamePlay.myPotion = myPotion;
+	}
+	
+	
+	
 
 	
 }

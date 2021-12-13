@@ -15,7 +15,8 @@ public class HealPotion extends Potion implements Usable{
 	}
 	
 	public void useItem(Maincharacter selectedCharacter) {
-		selectedCharacter.setHealth(selectedCharacter.getHealth() + heal);
+		selectedCharacter.setHealth(Math.max(selectedCharacter.getHealth() + heal,selectedCharacter.getMaxHealth()));	
+		
 	}
 	
 	public String toString() {
