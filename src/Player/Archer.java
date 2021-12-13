@@ -1,7 +1,6 @@
 package Player;
 
 import java.util.ArrayList;
-
 import entity.Monster;
 import entity.Player;
 

@@ -2,14 +2,12 @@ package entity;
 
 import javafx.scene.control.ProgressBar;
 
-public abstract class Monster extends Maincharacter {
+public class Monster extends Maincharacter {
 	private ProgressBar healthBar;
-	private int level;
 
 	public Monster(String name, String description, double health, double maxHealth, double mana, double maxMana,
-			double attack, double defense, int level) {
+			double attack, double defense) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
-		setLevel(level);
 	}
 
 	public ProgressBar getHealthBar() {
@@ -18,24 +16,6 @@ public abstract class Monster extends Maincharacter {
 
 	public void setHealthBar(ProgressBar healthBar) {
 		this.healthBar = healthBar;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-	public void leveup() {
-		setAttack(getAttack() * 1.2);
-		setDefense(getDefense() * 1.2);
-		setHealth(getHealth() * 1.2);
-		setMaxHealth(getMaxHealth() * 1.2);
-		setMaxMana(getMaxMana() * 1.2);
-		setMana(getMaxMana());
-		setLevel(getLevel() + 1);
 	}
 
 	public int getElementalAdvantage(Player play) {
