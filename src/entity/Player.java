@@ -1,41 +1,79 @@
 package entity;
 
+import Equipment.Accessory;
+import Equipment.Armor;
+import Equipment.Weapon;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 
 public abstract class Player extends Maincharacter {
+	private int lifesteal;
+	private Weapon weapon;
+	private Armor armor;
+	private Accessory accessory;
 	private ProgressBar healthBar;
-	private int level ;
+	protected int level;
 	
-	
-	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
-			double defense,int level,String image) {
-		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image) ;
 
+
+	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana,
+			double attack, double defense, int level,String image) {
+		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image);
+		(new Weapon()).equipItem(this);
+		(new Accessory()).equipItem(this);
+		(new Armor()).equipItem(this);
 		this.level = level;
+		this.lifesteal = 0;
 	}
 
+	public int getLifesteal() {
+		return lifesteal;
+	}
+
+	public void setLifesteal(int lifesteal) {
+		this.lifesteal = lifesteal;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
+	public Armor getArmor() {
+		return armor;
+	}
+
+	public void setArmor(Armor armor) {
+		this.armor = armor;
+	}
+
+	public Accessory getAccessory() {
+		return accessory;
+	}
+
+	public void setAccessory(Accessory accessory) {
+		this.accessory = accessory;
+	}
 
 	public ProgressBar getHealthBar() {
 		return healthBar;
 	}
 
-
 	public void setHealthBar(ProgressBar healthBar) {
 		this.healthBar = healthBar;
 	}
-
-
 
 	public int getLevel() {
 		return level;
 	}
 
-
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
+
 	public void leveup() {
 		setAttack(getAttack() * 1.2);
 		setDefense(getDefense() * 1.2);
@@ -58,18 +96,9 @@ public abstract class Player extends Maincharacter {
 		}
 		return 0;
 	};
-	
-	@Override
-	public boolean skill1(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public boolean skill2(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+	public abstract void useSkill1(Object o1);
+
+	public abstract void useSkill2(Object o1);
+
 }
-

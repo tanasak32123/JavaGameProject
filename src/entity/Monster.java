@@ -7,8 +7,8 @@ public abstract class Monster extends Maincharacter {
 	private int level;
 
 	public Monster(String name, String description, double health, double maxHealth, double mana, double maxMana,
-			double attack, double defense, int level) {
-		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
+			double attack, double defense, int level,String image) {
+		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image);
 		setLevel(level);
 	}
 
@@ -49,18 +49,6 @@ public abstract class Monster extends Maincharacter {
 			return 1;
 		}
 		return 0;
-	}
-
-	@Override
-	public boolean skill1(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean skill2(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

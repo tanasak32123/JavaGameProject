@@ -1,10 +1,12 @@
 package entity;
 
+
 import javax.lang.model.type.NullType;
 
 import javafx.scene.image.Image;
 
-public abstract class Maincharacter {
+public class Maincharacter {
+
 	
 	protected String name;
     protected String description;
@@ -15,19 +17,27 @@ public abstract class Maincharacter {
     protected double attack;
     protected double defense ;
     protected PlayType type ;
+
     protected String image ;
     
+
+    protected boolean isAlive;
+
     
     public Maincharacter() {
-    	setName("UnKnow") ;
-    	this.description ="UnKnow";
+    	setName("Unknown") ;
+    	this.description ="Unknown";
 		this.health =0;
 		this.maxHealth = 0;
 		this.mana = 0;
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
+
 		this.image =  "UNKnow" ;
+
+		isAlive = false;
+
     	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
     }
 
@@ -41,6 +51,7 @@ public abstract class Maincharacter {
 		this.maxMana = maxMana;
 		this.attack = attack;
 		this.defense = defense;
+		isAlive = true;
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
 		setImage(image);
 	}
@@ -51,6 +62,21 @@ public abstract class Maincharacter {
 
 	public void setImage(String image2) {
 		this.image = image2;
+	}
+	
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	public void updateIsAlive() {
+		if (health > 0) {
+			isAlive = true;
+		}
+		isAlive = false;
 	}
 
 	public String getName() {
@@ -74,7 +100,10 @@ public abstract class Maincharacter {
 	}
 
 	public void setHealth(double health) {
-		this.health = health;
+		if (health < maxHealth) {
+			this.health = health;
+		}
+		this.health = maxHealth;
 	}
 
 	public double getMaxHealth() {
@@ -90,7 +119,10 @@ public abstract class Maincharacter {
 	}
 
 	public void setMana(double mana) {
-		this.mana = mana;
+		if (mana < maxMana) {
+			this.mana = mana;
+		}
+		this.mana = maxMana;
 	}
 
 	public double getMaxMana() {
@@ -129,8 +161,7 @@ public abstract class Maincharacter {
 		return Math.pow(1.2, level-1) ;
 	}
 	
-	public abstract boolean skill1 (Monster mons,Player play)  ;
-	public abstract boolean skill2 (Monster mons,Player play)  ;
-    
+
 	
+
 }

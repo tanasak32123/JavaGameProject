@@ -3,10 +3,10 @@ package Potion;
 
 import entity.Maincharacter;
 
-public abstract class Mana extends Potion implements Usable{
+public abstract class ManaPotion extends Potion implements Usable{
 	private int mana;
 	
-	public Mana(String name, String description,int price,int mana) {
+	public ManaPotion(String name, String description,int price,int mana) {
 		super(name,description,price);
 		this.mana = mana;
 	}
@@ -22,6 +22,5 @@ public abstract class Mana extends Potion implements Usable{
 	public String toString() {
 		return "You gain " + mana + "mana.";
 	}
-
 
 }

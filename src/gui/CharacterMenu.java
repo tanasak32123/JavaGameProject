@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import Player.Assasin;
-import Player.Carry;
-import Player.Heal;
+import Player.Archer;
+import Player.Assassin;
+import Player.Healer;
 import Player.Tank;
 import entity.Player;
 import javafx.geometry.Insets;
@@ -83,9 +83,9 @@ public class CharacterMenu extends BorderPane {
 			text.setFont(Font.font("Comic Sans MS", FontWeight.BLACK, 24));
 
 			
-			Character as = new Character(new Assasin(1));
-			Character carry = new Character(new Carry(1));
-			Character heal =  new Character(new Heal(1));
+			Character as = new Character(new Assassin(1));
+			Character carry = new Character(new Archer(1));
+			Character heal =  new Character(new Healer(1));
 			Character tank =  new Character(new Tank(1));
 			this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY,new BorderWidths(25))));

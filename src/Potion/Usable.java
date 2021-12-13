@@ -1,9 +1,9 @@
 package Potion;
 
-import Entity.MainCharacter;
+import entity.Maincharacter;
 
 public interface Usable {
 	
-	void useItem(MainCharacter selectededCharacter);
+	void useItem(Maincharacter selectededCharacter);
 
 }
