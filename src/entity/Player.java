@@ -94,16 +94,8 @@ public abstract class Player extends Maincharacter {
 		return 0;
 	};
 
-	@Override
-	public boolean skill1(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public abstract boolean useSkill1(Monster mons, Player play);
 
-	@Override
-	public boolean skill2(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public abstract boolean useSkill2(Monster mons, Player play);
 
 }

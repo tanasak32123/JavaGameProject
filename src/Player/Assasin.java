@@ -5,7 +5,6 @@ import entity.Player;
 import javafx.scene.control.ProgressBar;
 
 public class Assasin extends Player {
-	private boolean isAlive;
 	private boolean isActive;
 
 	public Assasin(int level) {
@@ -16,7 +15,7 @@ public class Assasin extends Player {
 	
 
 	@Override
-	public boolean skill1(Monster mons, Player play) {
+	public boolean useSkill1(Monster mons, Player play) {
 		if (getMana() < 50)
 			return false;
 		setMana(getMana() - 50);
@@ -26,7 +25,7 @@ public class Assasin extends Player {
 
 
 	@Override
-	public boolean skill2(Monster mons, Player play) {
+	public boolean useSkill2(Monster mons, Player play) {
 		if (getMana()<10) return false ;
 		int ran = (int) Math.random()*3 ;
 		double damage ;

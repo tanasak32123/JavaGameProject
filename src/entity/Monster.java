@@ -51,16 +51,4 @@ public abstract class Monster extends Maincharacter {
 		return 0;
 	}
 
-	@Override
-	public boolean skill1(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean skill2(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

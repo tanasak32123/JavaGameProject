@@ -1,8 +1,6 @@
 package Monster;
 
 import entity.Monster;
-import entity.Player;
-import javafx.scene.control.ProgressBar;
 
 public class Boss extends Monster {
 
@@ -11,18 +9,4 @@ public class Boss extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public boolean skill1(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean skill2(Monster mons, Player play) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	
-
 }
