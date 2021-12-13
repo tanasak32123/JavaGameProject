@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import main.main;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,14 +23,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import scene.CharaterMenuScene;
 
 
 
 public class MainMenu extends Pane {
 	
+	private static Stage primaryStage ;
 
 	public MainMenu () {
 		this.setPrefSize(1050, 600);
+		
 		
 		try(InputStream is = Files.newInputStream(Paths.get("res/1-4-1024x576.jpg"))){
 			ImageView img = new ImageView(new Image(is));
@@ -46,11 +49,22 @@ public class MainMenu extends Pane {
 		title.setTranslateX(337.5);
 		title.setTranslateY(100);
 		
-		MenuBox vbox = new MenuBox(
-				new MenuItem("PLAY"),
-				new MenuItem("EXIT"));
+		MenuItem play = new MenuItem("PLAY" ) ;
+		MenuItem exit = new MenuItem("EXIT") ;
+		play.setOnMousePressed(event -> {
+			 Scene choosechar = new CharaterMenuScene() ;
+			 main.sceneHolder.switchScene(choosechar);
+			 
+		});
+		exit.setOnMousePressed(event -> {
+			System.exit(99) ; 
+		});
+		MenuBox vbox = new MenuBox(play,exit);
+	
 		vbox.setTranslateX(420);
 		vbox.setTranslateY(350);
+		
+		
 		
 		this.getChildren().addAll(title,vbox);
 	}

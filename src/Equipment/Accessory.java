@@ -29,8 +29,8 @@ public class Accessory extends Equipment implements Equipable{
 	@Override
 	public void equipItem(Player selectedCharacter) {
 		// set accessory to character
-		selectedCharacter.setAttack(selectedCharacter.getAttack() + (bonusDamage - selectedCharacter.getAccessory().getBonusDamage()));
-		selectedCharacter.setDefense(selectedCharacter.getDefense() + (bonusDefense - selectedCharacter.getAccessory().getBonusDefense()));
+//		selectedCharacter.setAttack(selectedCharacter.getAttack() + (bonusDamage - selectedCharacter.getAccessory().getBonusDamage()));
+//		selectedCharacter.setDefense(selectedCharacter.getDefense() + (bonusDefense - selectedCharacter.getAccessory().getBonusDefense()));
 
 	}
 	

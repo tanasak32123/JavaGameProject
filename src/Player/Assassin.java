@@ -22,6 +22,12 @@ public class Assassin extends Player {
 		setCanSkill2();
 	}
 
+	@Override
+	public String toString() {
+		return "Assassin [nameSkill1=" + nameSkill1 + ", nameSkill2=" + nameSkill2 + ", canSkill1=" + canSkill1
+				+ ", canSkill2=" + canSkill2 + "]";
+	}
+
 	public boolean isCanSkill1() {
 		return canSkill1;
 	}

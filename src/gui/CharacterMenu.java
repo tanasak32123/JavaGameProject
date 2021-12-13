@@ -1,11 +1,15 @@
 package gui;
 
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import javax.swing.text.Highlighter.HighlightPainter;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import Player.Archer;
 import Player.Assassin;
 import Player.Healer;
@@ -29,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -58,25 +63,23 @@ public class CharacterMenu extends BorderPane {
 				CornerRadii.EMPTY,new BorderWidths(25))));
 		
 		Rectangle r = new Rectangle() ;
-		r.setX(50);
-		r.setY(50);
-		r.setWidth(1000);
-		r.setHeight(300);
+		r.setX(20);
+		r.setY(80);
+		r.setWidth(1010);
+		r.setHeight(350);
 		r.setArcWidth(20);
 		r.setArcHeight(20);
-		r.setOpacity(0.3) ;
-		
+		r.setOpacity(0.7) ;
+		r.setFill(Color.WHITE) ;
 		
 
-		this.getChildren().addAll(ch,r);
+		this.getChildren().addAll(r,ch);
 
 	}
 
-	private static class ChooseCharacter extends HBox {
+	private static class ChooseCharacter extends Pane {
 		public ChooseCharacter(String name) {
 			
-			
-			this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 			
 			Text text = new Text(name);
 			text.setFill(Color.DARKBLUE);
@@ -90,13 +93,14 @@ public class CharacterMenu extends BorderPane {
 			this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY,new BorderWidths(25))));
 			as.setTranslateX(-150);
-			tank.setTranslateX(150);
-			carry.setTranslateX(-50);
-			heal.setTranslateX(50);
-			
-	
+			tank.setTranslateX(600);
+			carry.setTranslateX(100);
+			heal.setTranslateX(350);
+			this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+			text.setTranslateX(150);
+			text.setTranslateY(-50);
 
-			this.getChildren().addAll( as, carry,heal,tank);
+			this.getChildren().addAll(text,as, carry,heal,tank);
 		}
 	}
 
@@ -109,7 +113,13 @@ public class CharacterMenu extends BorderPane {
 			ImageView imagee = new ImageView(image);
 			imagee.setFitWidth(150);
 			imagee.setFitHeight(180);
-			getChildren().addAll(imagee, new Title(play));
+			Button button = new Button() ;
+			button.setGraphic(imagee);
+//			button.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+//			button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
+//					CornerRadii.EMPTY,new BorderWidths(1))));
+
+			getChildren().addAll(button, new Title(play));
 		}
 
 		public void setImage(String im) {
@@ -141,14 +151,28 @@ public class CharacterMenu extends BorderPane {
 			hp.setFont(Font.font("Helvetica", FontWeight.BLACK, 14));
 			mana.setFont(Font.font("Helvetica", FontWeight.BLACK, 14));
 			type.setFont(Font.font("Helvetica", FontWeight.BLACK, 14));
-			name.setTranslateX(30);
+			name.setTranslateX(40);
+			atk.setTranslateX(5);
+			def.setTranslateX(5);
+			mana.setTranslateX(5);
+			hp.setTranslateX(5);
+			type.setTranslateX(5);
+			
+			
 			this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-
+			try (InputStream is = Files.newInputStream(Paths.get("res/depositphotos_82698376-stock-photo-watercolor-purple-background-for-text.jpg"))) {
+				Image img = new Image(is) ;
+				this.setBackground(new Background(new BackgroundImage(img, null, null, null,new BackgroundSize(300,120, isFocusTraversable(), isDisabled(), isDisable(), isCache())))) ;
+			} catch (IOException e) {
+				System.out.println("Couldn't load image");
+			}
 			getChildren().addAll(name, atk, def, hp, mana, type);
 
 		}
 
 	}
+	
+
 
 }

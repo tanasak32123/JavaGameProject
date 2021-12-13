@@ -7,9 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import gui.CharacterMenu;
+import gui.Fighting;
 import gui.MainMenu;
 import javafx.application.*;
 import javafx.stage.*;
+import scene.SceneHolder;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.image.Image;
@@ -28,11 +30,13 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.*;
 
 public class main extends Application{
-	
+	public static SceneHolder sceneHolder ;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		Scene scene = new Scene(new CharacterMenu());
+		
+		Scene scene = new Scene(new Fighting());
+//		(this.sceneHolder = new SceneHolder(primaryStage)).initialize(); 
 		primaryStage.setTitle("POD AND NOON");
 		primaryStage.setScene(scene);
 		primaryStage.show();
