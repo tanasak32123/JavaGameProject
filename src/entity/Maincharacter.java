@@ -59,7 +59,10 @@ public abstract class Maincharacter {
 	}
 
 	public void setHealth(double health) {
-		this.health = health;
+		if (health < maxHealth) {
+			this.health = health;
+		}
+		this.health = maxHealth;
 	}
 
 	public double getMaxHealth() {
@@ -75,7 +78,10 @@ public abstract class Maincharacter {
 	}
 
 	public void setMana(double mana) {
-		this.mana = mana;
+		if (mana < maxMana) {
+			this.mana = mana;
+		}
+		this.mana = maxMana;
 	}
 
 	public double getMaxMana() {
