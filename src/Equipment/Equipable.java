@@ -1,9 +1,9 @@
 package Equipment;
 
-import Entity.MainCharacter;
+import entity.Player;
 
 public interface Equipable {
 	
-	void equipItem(MainCharacter selectedCharacter);
+	void equipItem(Player selectedCharacter);
 	
 }
