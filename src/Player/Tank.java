@@ -1,6 +1,5 @@
 package Player;
 
-import entity.Monster;
 import entity.Player;
 
 public class Tank extends Player {
@@ -15,8 +14,8 @@ public class Tank extends Player {
 	private int cooldownArmor;
 
 	public Tank(int level) {
-		super("Jotaro", "This is character is Big-Daddy.", 150 * condi(level), 150 * condi(level), 25 * condi(level), 25 * condi(level),
-				30 * condi(level), 30 * condi(level), level);
+		super("Jotaro", "This is character is Big-Daddy.", 150 * condi(level), 150 * condi(level), 25 * condi(level),
+				25 * condi(level), 30 * condi(level), 30 * condi(level), level);
 		nameSkill1 = "Taunt";
 		nameSkill2 = "Armor Up";
 		isTaunt = false;
@@ -31,7 +30,7 @@ public class Tank extends Player {
 		else
 			canSkill1 = true;
 	}
-	
+
 	public void setCanSkill2() {
 		if (level < 3 || mana < 15)
 			canSkill2 = false;
@@ -59,27 +58,25 @@ public class Tank extends Player {
 			mana -= 15;
 		}
 	}
-	
+
 	public void updateIsArmor() {
 		if (cooldownArmor == 0) {
 			if (isArmor) {
 				setDefense(getDefense() - 50);
 				isArmor = false;
 			}
-		}
-		else {
+		} else {
 			cooldownArmor -= 1;
 		}
 	}
-	
+
 	public void updateIsTuant() {
 		if (cooldownTaunt == 0) {
 			if (isTaunt) {
-				isArmor = false;
+				isTaunt = false;
 			}
-		}
-		else {
-			cooldownArmor -= 1;
+		} else {
+			cooldownTaunt -= 1;
 		}
 	}
 
@@ -103,16 +100,8 @@ public class Tank extends Player {
 		return isTaunt;
 	}
 
-	public void setTaunt(boolean isTaunt) {
-		this.isTaunt = isTaunt;
-	}
-
 	public int getCooldownTaunt() {
 		return cooldownTaunt;
-	}
-
-	public void setCooldownTaunt(int cooldownTaunt) {
-		this.cooldownTaunt = cooldownTaunt;
 	}
 
 }

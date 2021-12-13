@@ -12,7 +12,8 @@ public class GamePlay {
 	protected static ArrayList<Potion> myPotion ;
 	
 	
-	
-
+	public static ArrayList<Player> getMyChar() {
+		return myChar;
+	}
 	
 }
