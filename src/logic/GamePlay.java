@@ -13,6 +13,7 @@ public class GamePlay {
 
 	public static ArrayList<Player> myChar;
 	public static ArrayList<Potion> myPotion;
+	public static int levelAllChar = 1;
 	public static int money;
 	public static int healPotion;
 	public static int manaPotion;
@@ -66,6 +67,16 @@ public class GamePlay {
 		}
 		GamePlay.healPotion = healPotion;
 		GamePlay.manaPotion = manaPotion;
+	}
+	
+	public static boolean isAllCharacterDead() {
+		boolean allDead = true;
+		for (Player player : myChar) {
+			if (player.isAlive()) {
+				allDead = false;
+			}
+		}
+		return allDead;
 	}
 
 	public static int getHealPotion() {

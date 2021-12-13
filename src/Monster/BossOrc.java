@@ -9,4 +9,8 @@ public class BossOrc extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void playerGetMoneyFromKilled() {
+		
+	}
+	
 }

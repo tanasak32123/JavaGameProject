@@ -43,8 +43,8 @@ public class Maincharacter {
 	public void updateIsAlive() {
 		if (health > 0) {
 			isAlive = true;
-		}
-		isAlive = false;
+		} else
+			isAlive = false;
 	}
 
 	public boolean isAlive() {

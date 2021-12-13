@@ -1,6 +1,7 @@
 package Monster;
 
 import entity.Monster;
+import logic.GamePlay;
 
 public class Orc extends Monster {
 
@@ -9,4 +10,8 @@ public class Orc extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void playerGetMoneyFromKilled() {
+		GamePlay.money += 25;
+	}
+	
 }

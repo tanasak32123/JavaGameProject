@@ -44,7 +44,10 @@ public class Assassin extends Player {
 		if (o1 instanceof Monster) {
 			Monster monster = (Monster) o1;
 			setMana(getMana() - 15);
-			monster.setHealth(monster.getHealth() - (this.getAttack() * ((int) (Math.random() * 3))));
+			int damage = (int)(this.getAttack() * ((Math.random() * 3)));
+			if (damage > monster.getDefense()) {
+				monster.setHealth(monster.getHealth() + monster.getDefense() - damage);
+			}
 			mana -= 15;
 		}
 	}

@@ -9,6 +9,7 @@ import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
 import logic.GamePlay;
+import logic.GameStage;
 
 public class Shop {
 	private ArrayList<Equipment> EquipmentInShop;
@@ -22,10 +23,24 @@ public class Shop {
 		EquipmentInShop = new ArrayList<>();
 		PotionInShop = new ArrayList<>();
 		
-		Equipment weapon1 = new Weapon("Wooden Sword","It is useful in early stage.",50,15,0);
-		Equipment armor1 = new Armor("Wooden Sheild","It is useful in early stage.",50,0,10);
-		Equipment accessory1 = new Accessory("Amulet","It is useful in early stage.",50,10,5);
-		
+		switch (GameStage.stage) {
+			case 1:
+				Equipment weapon1 = new Weapon("Wooden Sword","It is useful in early stage.",50,15,0);
+				Equipment armor1 = new Armor("Wooden Sheild","It is useful in early stage.",50,0,10);
+				Equipment accessory1 = new Accessory("Amulet","It is useful in early stage.",50,10,5);
+				break;
+			case 2:	
+				Equipment weapon2 = new Weapon("Wooden Sword","It is useful in early stage.",50,15,0);
+				Equipment armor2 = new Armor("Wooden Sheild","It is useful in early stage.",50,0,10);
+				Equipment accessory2 = new Accessory("Amulet","It is useful in early stage.",50,10,5);
+				break;
+			case 3:
+				Equipment weapon3 = new Weapon("Wooden Sword","It is useful in early stage.",50,15,0);
+				Equipment armor3 = new Armor("Wooden Sheild","It is useful in early stage.",50,0,10);
+				Equipment accessory3 = new Accessory("Amulet","It is useful in early stage.",50,10,5);
+				break;
+		}
+			
 		Potion healPotion = new HealPotion();
 		Potion manaPotion = new ManaPotion();
 		
