@@ -45,9 +45,12 @@ public class Healer extends Player {
 		// TODO Auto-generated method stub
 		if (o1 instanceof Player && canSkill2()) {
 			Player player = (Player) o1;
-			player.setAlive(true);
-			mana -= 30;
-			return true;
+			if (!player.isAlive()) {
+				player.setHealth(player.getMaxHealth()*0.5);
+				player.setMana(player.getMaxMana()*0.5);
+				mana -= 30;
+				return true;
+			}
 		}
 		return false;
 	}

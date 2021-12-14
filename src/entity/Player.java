@@ -4,10 +4,15 @@ import Equipment.Accessory;
 import Equipment.Armor;
 import Equipment.Equipment;
 import Equipment.Weapon;
+import Potion.HealPotion;
+import Potion.ManaPotion;
+import Potion.Potion;
 import interfaces.Equipable;
+import interfaces.Usable;
 import javafx.scene.control.ProgressBar;
+import logic.GamePlay;
 
-public abstract class Player extends Maincharacter implements Equipable {
+public abstract class Player extends Maincharacter implements Equipable,Usable {
 	private int lifesteal;
 	private Weapon weapon;
 	private Armor armor;
@@ -29,6 +34,21 @@ public abstract class Player extends Maincharacter implements Equipable {
 		
 	}
 
+	public void useItem(Potion potion) {
+		if (potion instanceof HealPotion) {
+			if (health < maxHealth) {
+				GamePlay.healPotion -= 1;
+				setHealth(health + HealPotion.heal);
+			}
+		}
+		if (potion instanceof ManaPotion) {
+			if (mana < maxMana) {
+				GamePlay.manaPotion -= 1;
+				setMana(mana + ManaPotion.mana);
+			}
+		}
+	}
+	
 	public void equipItem(Equipment equipment) {
 		if (equipment instanceof Weapon) {
 			setWeapon((Weapon) equipment);
