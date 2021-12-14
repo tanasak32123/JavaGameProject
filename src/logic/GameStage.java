@@ -3,8 +3,11 @@ package logic;
 import Monster.ArmorOrc;
 import Monster.BossOrc;
 import Monster.Orc;
+import Player.Assassin;
+import Player.Tank;
 import character.CharacterData;
 import character.MonsterData;
+import entity.Player;
 import Shop.Shop;
 
 public class GameStage {
@@ -77,7 +80,37 @@ public class GameStage {
 		
 	}
 	
+	public static void resetPlayerToNewStage() {
+		for (Player player : GamePlay.myChar) {
+			if (!player.isAlive()) {
+				player.setHealth(player.getMaxHealth()*0.2);
+				player.setMana(player.getMaxMana()*0.5);
+			}
+			resetAbility(player);
+		}
+	}
+	
+	public static void resetAbility(Player player) {
+		if (player instanceof Tank) {
+			if (((Tank) player).isArmor()) {
+				((Tank) player).setArmor(false);
+				((Tank) player).setCooldownArmor(0);
+			}
+			if (((Tank) player).isTaunt()) {
+				((Tank) player).setTaunt(false);
+				((Tank) player).setCooldownTaunt(0);
+			}
+		}
+		if (player instanceof Assassin) {
+			if (((Assassin) player).isCheer()) {
+				((Assassin) player).setCooldownCheer(0);
+				((Assassin) player).updateIsCheer();
+			}
+		}
+	}
+	
 	public static void resetStage() {
+		resetPlayerToNewStage();
 		MonsterData.allMonsterInField.clear();
 	}
 	

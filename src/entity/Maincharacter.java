@@ -2,7 +2,7 @@ package entity;
 
 import interfaces.IsAlive;
 
-public class Maincharacter implements IsAlive{
+public abstract class Maincharacter implements IsAlive{
 
 	protected String name;
 	protected String description;
@@ -39,31 +39,13 @@ public class Maincharacter implements IsAlive{
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
 	}
 
+	public abstract int attack(Maincharacter character);
+	
 	public boolean isAlive() {
 		if (health <= 0) {
 			return false;
 		}
 		return true;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getHealth() {
-		return health;
 	}
 
 	public void setHealth(double health) {
@@ -145,6 +127,26 @@ public class Maincharacter implements IsAlive{
 
 	public static double condi(int level) {
 		return Math.pow(1.2, level - 1);
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getHealth() {
+		return health;
 	}
 
 }

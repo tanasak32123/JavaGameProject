@@ -1,10 +1,11 @@
 package Shop;
 
 import java.util.ArrayList;
-import Equipment.Accessory;
-import Equipment.Armor;
-import Equipment.Equipment;
-import Equipment.Weapon;
+
+import Item.Accessory;
+import Item.Armor;
+import Item.Equipment;
+import Item.Weapon;
 import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
@@ -58,13 +59,22 @@ public class Shop {
 		if (o1 instanceof Equipment) {
 			if (GamePlay.money >= ((Equipment) o1).getPrice()) {
 				if (o1 instanceof Weapon) {
+					//select to choose your character to get new weapon
 					
+					
+					//
 				}
 				if (o1 instanceof Armor) {
+					//select to choose your character to get new weapon
 					
+					
+					//
 				}
 				if (o1 instanceof Accessory) {
-	
+					//select to choose your character to get new weapon
+					
+					
+					//
 				}
 			}
 		}

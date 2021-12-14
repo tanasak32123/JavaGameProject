@@ -1,6 +1,7 @@
 package logic;
 
 import character.MonsterData;
+import entity.Maincharacter;
 import entity.Monster;
 import entity.Player;
 
@@ -24,6 +25,10 @@ public class GameLogic {
 		if (GamePlay.isAllCharacterDead()) {
 			
 		}
+	}
+	
+	public static void attack(Maincharacter character) {
+		if ()
 	}
 
 }

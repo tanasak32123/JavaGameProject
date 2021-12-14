@@ -1,9 +1,9 @@
 package entity;
 
-import Equipment.Accessory;
-import Equipment.Armor;
-import Equipment.Equipment;
-import Equipment.Weapon;
+import Item.Accessory;
+import Item.Armor;
+import Item.Equipment;
+import Item.Weapon;
 import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
@@ -31,7 +31,25 @@ public abstract class Player extends Maincharacter implements Equipable,Usable {
 	}
 	
 	public void doAction() {
+		// select one of the action to do
 		
+		
+		
+		//
+		
+		// case 1 : attack
+		// case 2 : skills
+		// case 3 : items
+	}
+	
+	public int attack(Maincharacter character) {
+		if (character instanceof Monster) {
+			if (attack <= character.getDefense()) {
+				return 0;
+			} 
+			
+		}
+		return 0;
 	}
 
 	public void useItem(Potion potion) {
@@ -60,7 +78,7 @@ public abstract class Player extends Maincharacter implements Equipable,Usable {
 			setAccessory((Accessory) equipment);
 		}
 	}
-
+	
 	public void setWeapon(Weapon weapon) {
 		setAttack(attack + (weapon.getDamage() - this.weapon.getDamage()));
 		setLifesteal(lifesteal + (weapon.getLifesteal() - this.weapon.getLifesteal()));

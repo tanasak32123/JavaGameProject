@@ -1,4 +1,4 @@
-package Equipment;
+package Item;
 
 public class Accessory extends Equipment {
 	private int bonusDamage;

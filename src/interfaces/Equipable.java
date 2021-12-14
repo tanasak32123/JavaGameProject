@@ -1,6 +1,6 @@
 package interfaces;
 
-import Equipment.Equipment;
+import Item.Equipment;
 
 public interface Equipable {
 	

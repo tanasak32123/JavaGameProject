@@ -21,7 +21,7 @@ public class Tank extends Player {
 		isArmor = false;
 		cooldownArmor = 0;
 	}
-
+	
 	public boolean canSkill1() {
 		if (mana < 10)
 			return false;
@@ -60,7 +60,7 @@ public class Tank extends Player {
 		}
 		return false;
 	}
-
+	
 	public void updateIsArmor() {
 		if (cooldownArmor == 0) {
 			if (isArmor) {
@@ -96,6 +96,30 @@ public class Tank extends Player {
 
 	public int getCooldownTaunt() {
 		return cooldownTaunt;
+	}
+	
+	public boolean isArmor() {
+		return isArmor;
+	}
+
+	public void setArmor(boolean isArmor) {
+		this.isArmor = isArmor;
+	}
+
+	public int getCooldownArmor() {
+		return cooldownArmor;
+	}
+
+	public void setCooldownArmor(int cooldownArmor) {
+		this.cooldownArmor = cooldownArmor;
+	}
+
+	public void setTaunt(boolean isTaunt) {
+		this.isTaunt = isTaunt;
+	}
+
+	public void setCooldownTaunt(int cooldownTaunt) {
+		this.cooldownTaunt = cooldownTaunt;
 	}
 
 }

@@ -28,6 +28,7 @@ public class Assassin extends Player {
 			return true;
 	}
 
+	
 	public boolean canSkill2() {
 		if (level < 3 || mana < 20)
 			return false;
@@ -94,6 +95,14 @@ public class Assassin extends Player {
 
 	public int getCooldownCheer() {
 		return cooldownCheer;
+	}
+	
+	public void setCheer(boolean isCheer) {
+		this.isCheer = isCheer;
+	}
+
+	public void setCooldownCheer(int cooldownCheer) {
+		this.cooldownCheer = cooldownCheer;
 	}
 
 }

@@ -36,8 +36,8 @@ public class GamePlay {
 		updatePotion(potion);
 		myPotion.add(potion);
 	}
-
-	public static void updateCharacter() {
+	
+	public static void updateCharacterPerTurn() {
 		for (Player player : myChar) {
 			if (!player.isAlive()) {
 				//do something when character die
