@@ -35,10 +35,10 @@ public class main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		
-		Scene scene = new Scene(new Fighting());
-//		(this.sceneHolder = new SceneHolder(primaryStage)).initialize(); 
+//		Scene scene = new Scene(new Fighting());
+		(this.sceneHolder = new SceneHolder(primaryStage)).initialize(); 
 		primaryStage.setTitle("POD AND NOON");
-		primaryStage.setScene(scene);
+//		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 	

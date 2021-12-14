@@ -1,4 +1,4 @@
-package Equipment;
+package Item;
 
 import entity.Player;
 

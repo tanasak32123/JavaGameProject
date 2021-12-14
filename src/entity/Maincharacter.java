@@ -6,7 +6,6 @@ import javax.lang.model.type.NullType;
 import javafx.scene.image.Image;
 
 public class Maincharacter {
-
 	
 	protected String name;
     protected String description;
@@ -17,32 +16,26 @@ public class Maincharacter {
     protected double attack;
     protected double defense ;
     protected PlayType type ;
-
     protected String image ;
-    
-
     protected boolean isAlive;
 
-    
-    public Maincharacter() {
-    	setName("Unknown") ;
-    	this.description ="Unknown";
-		this.health =0;
+	public Maincharacter() {
+		setName("Unknown");
+		this.description = "Unknown";
+		this.health = 0;
 		this.maxHealth = 0;
 		this.mana = 0;
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
-
 		this.image =  "UNKnow" ;
-
 		isAlive = false;
-
     	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
     }
 
-	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana, double attack,
-			double defense,String image) {
+	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana,
+			double attack, double defense,String image) {
+		
 		this.name = name;
 		this.description = description;
 		this.health = health;
@@ -63,20 +56,20 @@ public class Maincharacter {
 	public void setImage(String image2) {
 		this.image = image2;
 	}
-	
+
+	public void updateIsAlive() {
+		if (health > 0) {
+			isAlive = true;
+		} else
+			isAlive = false;
+	}
+
 	public boolean isAlive() {
 		return isAlive;
 	}
 
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
-	}
-
-	public void updateIsAlive() {
-		if (health > 0) {
-			isAlive = true;
-		}
-		isAlive = false;
 	}
 
 	public String getName() {
@@ -101,9 +94,12 @@ public class Maincharacter {
 
 	public void setHealth(double health) {
 		if (health < maxHealth) {
+			if (health < 0) {
+				this.health = 0;
+			}
 			this.health = health;
-		}
-		this.health = maxHealth;
+		} else
+			this.health = maxHealth;
 	}
 
 	public double getMaxHealth() {
@@ -156,12 +152,10 @@ public class Maincharacter {
 	public void setType(PlayType type) {
 		this.type = type;
 	}
-    
-	public static double condi (int level) {
-		return Math.pow(1.2, level-1) ;
-	}
-	
 
-	
+	public static double condi(int level) {
+		return Math.pow(1.2, level - 1);
+	}
+
 
 }
