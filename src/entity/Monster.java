@@ -17,8 +17,17 @@ public abstract class Monster extends Maincharacter {
 				return 0;
 			}
 			int damage = (int) (attack - character.getDefense());
-			if ()
-			character.setHealth(character.getHealth() - damage);
+			if (getElementalAdvantage((Player) character) == 1) {
+				damage *= 1.3;
+				character.setHealth(character.getHealth() - damage);
+			}
+			else if (getElementalAdvantage((Player) character) == -1) {
+				damage *= 0.7;
+				character.setHealth(character.getHealth() - damage);
+			}
+			else {
+				character.setHealth(character.getHealth() - damage);
+			}
 			return damage;
 		}
 		return 0;

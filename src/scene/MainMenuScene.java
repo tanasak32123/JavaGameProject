@@ -26,6 +26,4 @@ public class MainMenuScene extends Scene {
 	    this.stackPane.getChildren().add(new MainMenu());
 	    }
 	
-	
-
 }
