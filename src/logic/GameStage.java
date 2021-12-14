@@ -98,6 +98,11 @@ public class GameStage {
 	public static void duringStage(int stage) {
 		while (!GameLogic.endStage) {
 			switch (stage) {
+				case 0: {
+					//enter choose character
+					
+					//
+				}
 				case 1 : case 2 : {
 					GameLogic.actionInTurnPhase();
 				}
@@ -161,14 +166,20 @@ public class GameStage {
 		}
 	}
 	
-	public static void resetTStage() {
+	public static void resetToNewStage() {
 		resetPlayerToNewStage();
 		MonsterData.allMonsterInField.clear();
 	}
 	
-	public static void restartToNewStage() {
+	public static void clearAllData() {
+		MonsterData.allMonsterInField.clear();
+		CharacterData.allChooseCharacter.clear();
+		GamePlay.createGamePlay();
+	}
+	
+	public static void restartToNewBegin() {
 		// restart everything 
-		
+		clearAllData();
 		GameLogic.loser = false;
 		GameLogic.endStage = false;
 	}

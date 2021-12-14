@@ -31,9 +31,9 @@ public class GamePlay {
 		myChar.add(player);
 		CharacterData.updateAllChooseCharacter(player);
 	}
-
+	
 	public static void addPotion(Potion potion) {
-		updatePotion(potion);
+		updateAddPotion(potion);
 		myPotion.add(potion);
 	}
 	
@@ -49,7 +49,7 @@ public class GamePlay {
 		}
 	}
 	
-	public static void updatePotion(Potion potion) {
+	public static void updateAddPotion(Potion potion) {
 		if (potion instanceof HealPotion) {
 			healPotion += 1;
 		}

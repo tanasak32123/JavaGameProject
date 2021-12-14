@@ -56,8 +56,9 @@ public abstract class Maincharacter implements IsAlive{
 			else {
 				this.health = health;
 			}
-		} else
+		} else {
 			this.health = maxHealth;
+		}
 	}
 
 	public double getMaxHealth() {

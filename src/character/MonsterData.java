@@ -8,13 +8,12 @@ public class MonsterData {
 	public static ArrayList<Monster> allMonsterInField;
 	
 	public static boolean isAllMonsterInFieldDead() {
-		boolean allDeath = true;
 		for (Monster monster : allMonsterInField) {
 			if (monster.isAlive()) {
-				allDeath = false;
+				return false;
 			}
 		}
-		return allDeath;
+		return true;
 	}
 
 	public static ArrayList<Monster> getAllMonsterInField() {

@@ -45,9 +45,22 @@ public class GameLogic {
 		}
 	}
 	
+	public static void isLoser() {
+		if (loser) {
+			//show restart menu;
+			
+			
+			//
+			GameStage.restartToNewBegin();
+		}
+	}
+	
 	public static void isWinner() {
 		if (winner) {
+			//show image congratulation
 			
+			
+			//
 		}
 	}
 	
