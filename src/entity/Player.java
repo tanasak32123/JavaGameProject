@@ -24,6 +24,10 @@ public abstract class Player extends Maincharacter implements Equipable {
 		this.level = level;
 		this.lifesteal = 0;
 	}
+	
+	public void doAction() {
+		
+	}
 
 	public void equipItem(Equipment equipment) {
 		if (equipment instanceof Weapon) {

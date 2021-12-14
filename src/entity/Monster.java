@@ -10,12 +10,8 @@ public abstract class Monster extends Maincharacter{
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
 	}
 
-	public ProgressBar getHealthBar() {
-		return healthBar;
-	}
-
-	public void setHealthBar(ProgressBar healthBar) {
-		this.healthBar = healthBar;
+	public void attackRandom() {
+		
 	}
 
 	public int getElementalAdvantage(Player play) {
@@ -32,4 +28,13 @@ public abstract class Monster extends Maincharacter{
 	}
 
 	public abstract void playerGetMoneyFromKilled();
+	
+	public ProgressBar getHealthBar() {
+		return healthBar;
+	}
+
+	public void setHealthBar(ProgressBar healthBar) {
+		this.healthBar = healthBar;
+	}
+	
 }
