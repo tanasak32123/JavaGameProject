@@ -40,7 +40,7 @@ public class Shop {
 		}
 		case 3: {
 			EquipmentInShop.add(new Weapon("Lifesteal Sword", "It is useful in early stage.", 100, 20, 20));
-			EquipmentInShop.add(new Armor("Wooden Sheild", "It is useful in early stage.", 75, 5, 20));
+			EquipmentInShop.add(new Armor("Strong Sheild", "It is useful in early stage.", 75, 5, 20));
 			EquipmentInShop.add(new Accessory("Strong Amulet", "It is useful in early stage.", 75, 10, 10));
 			break;
 		}
