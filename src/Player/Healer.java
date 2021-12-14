@@ -11,7 +11,7 @@ public class Healer extends Player {
 
 	public Healer(int level) {
 		super("Nami", "This character has ability to heal your team.", 140 * condi(level), 140 * condi(level),
-				140 * condi(level), 140 * condi(level), 10 * condi(level), 60 * condi(level), level,"res/healer.png");
+				140 * condi(level), 140 * condi(level), 10 * condi(level), 60 * condi(level), level, "res/healer.png");
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Sympathy";
 		nameSkill2 = "Revive";

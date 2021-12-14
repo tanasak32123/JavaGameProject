@@ -4,11 +4,9 @@ package Potion;
 import entity.Maincharacter;
 import logic.GamePlay;
 
-<<<<<<< HEAD
+
 public  class ManaPotion extends Potion implements Usable{
-=======
-public class ManaPotion extends Potion implements Usable{
->>>>>>> noon
+
 	private int mana;
 	
 	public ManaPotion() {

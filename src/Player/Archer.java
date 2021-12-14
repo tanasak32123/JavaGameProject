@@ -13,7 +13,8 @@ public class Archer extends Player {
 
 	public Archer(int level) {
 		super("Sylvanas", "This character has a lot of damge,but low hp and def.", 110 * condi(level),
-				110 * condi(level), 30 * condi(level), 30 * condi(level), 40 * condi(level), 15 * condi(level), level,"res/carry.png");
+				110 * condi(level), 30 * condi(level), 30 * condi(level), 40 * condi(level), 15 * condi(level), level,
+				"res/carry.png");
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Make It Rain";
 		nameSkill2 = "Hunt The Mark";

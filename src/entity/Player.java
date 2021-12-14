@@ -20,7 +20,8 @@ public abstract class Player extends Maincharacter {
 			double attack, double defense, int level,String image) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image);
 		(new Weapon()).equipItem(this);
-		(new Accessory()).equipItem(this);
+		accessory = new Accessory() ;
+		(accessory).equipItem(this);
 		(new Armor()).equipItem(this);
 		this.level = level;
 		this.lifesteal = 0;

@@ -15,8 +15,8 @@ public class Tank extends Player {
 
 	public Tank(int level) {
 
-		super("Jotaro", "This is character is Big-Daddy.", 150 * condi(level), 150 * condi(level), 25 * condi(level), 25 * condi(level),
-				30 * condi(level), 30 * condi(level), level,"res/Tank.png");
+		super("Jotaro", "This is character is Big-Daddy.", 150 * condi(level), 150 * condi(level), 25 * condi(level),
+				25 * condi(level), 30 * condi(level), 30 * condi(level), level, "res/Tank.png");
 
 		nameSkill1 = "Taunt";
 		nameSkill2 = "Armor Up";
@@ -113,6 +113,5 @@ public class Tank extends Player {
 				+ ", canSkill2=" + canSkill2 + ", isTaunt=" + isTaunt + ", cooldownTaunt=" + cooldownTaunt
 				+ ", isArmor=" + isArmor + ", cooldownArmor=" + cooldownArmor + "]";
 	}
-	
 
 }

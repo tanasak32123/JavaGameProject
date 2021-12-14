@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import main.main;
+
+import application.Main;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -53,7 +54,7 @@ public class MainMenu extends Pane {
 		MenuItem exit = new MenuItem("EXIT") ;
 		play.setOnMousePressed(event -> {
 			 Scene choosechar = new CharaterMenuScene() ;
-			 main.sceneHolder.switchScene(choosechar);
+			 Main.sceneHolder.switchScene(choosechar);
 			 
 		});
 		exit.setOnMousePressed(event -> {

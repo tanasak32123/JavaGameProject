@@ -38,7 +38,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import main.main;
+
 
 public class CharacterMenu extends BorderPane {
 
