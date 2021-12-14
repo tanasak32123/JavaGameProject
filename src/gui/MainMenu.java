@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import application.Main;
+import constant.SoundHolder;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -34,6 +36,11 @@ public class MainMenu extends Pane {
 
 	public MainMenu () {
 		this.setPrefSize(1050, 600);
+		if(!SoundHolder.getInstance().bgm.isPlaying()) {
+            SoundHolder.getInstance().bgm.play(0.2);
+            SoundHolder.getInstance().bgm.setCycleCount(MediaPlayer.INDEFINITE);
+        }
+
 		
 		
 		try(InputStream is = Files.newInputStream(Paths.get("res/1-4-1024x576.jpg"))){

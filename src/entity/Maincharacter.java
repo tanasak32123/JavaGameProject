@@ -1,8 +1,11 @@
 package entity;
 
 
+
+
 import javax.lang.model.type.NullType;
 
+import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class Maincharacter {
@@ -18,6 +21,7 @@ public class Maincharacter {
     protected PlayType type ;
     protected String image ;
     protected boolean isAlive;
+    protected Point2D position ;
 
 	public Maincharacter() {
 		setName("Unknown");
@@ -31,7 +35,15 @@ public class Maincharacter {
 		this.image =  "UNKnow" ;
 		isAlive = false;
     	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
+    	position = new Point2D(100, 100) ;
+    	
     }
+	
+	public Maincharacter(Point2D position) {
+		this() ;
+		this.position = position ;
+		
+	}
 
 	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense,String image) {
@@ -156,6 +168,15 @@ public class Maincharacter {
 	public static double condi(int level) {
 		return Math.pow(1.2, level - 1);
 	}
+
+	public Point2D getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point2D position) {
+		this.position = position;
+	}
+
 
 
 }

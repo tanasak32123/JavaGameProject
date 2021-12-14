@@ -1,18 +1,26 @@
 package Potion;
 
-public abstract class Potion {
+import interfaces.InShop;
+
+public abstract class Potion implements InShop{
 	protected String name;
 	protected String description;
 	protected int price;
-	protected boolean isEmpty;
+	protected boolean soldOut;
+	protected String image ;
 	
-	Potion(String name, String description,int price) {
+	Potion(String name, String description,int price,String image) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		isEmpty = false;
+		soldOut = false;
+		this.image = image ;
 	}
 
+	public void isSoldOut() {
+		soldOut = true;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -24,13 +32,14 @@ public abstract class Potion {
 	public int getPrice() {
 		return price;
 	}
+	
 
-	public boolean isEmpty() {
-		return isEmpty;
+	public String getImage() {
+		return image;
 	}
 
-	public void setIsEmpty(boolean isEmpty) {
-		this.isEmpty = isEmpty;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public abstract String toString();

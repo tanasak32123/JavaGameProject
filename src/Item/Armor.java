@@ -11,8 +11,8 @@ public class Armor extends Equipment implements Equipable{
 		defense = 0;
 	}
 	
-	public Armor(String name,String description,int price,int bonusDamage,int defense) {
-		super(name,description,price);
+	public Armor(String name,String description,int price,int bonusDamage,int defense,String image) {
+		super(name,description,price,image);
 		this.bonusDamage = bonusDamage;
 		this.defense = defense;
 	}

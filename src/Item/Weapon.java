@@ -11,8 +11,8 @@ public class Weapon extends Equipment implements Equipable {
 		lifesteal = 0;
 	}
 
-	public Weapon(String name, String description, int price, int damage, int lifesteal) {
-		super(name, description, price);
+	public Weapon(String name, String description, int price, int damage, int lifesteal,String image) {
+		super(name, description, price,image);
 		this.damage = damage;
 		this.lifesteal = lifesteal;
 	}

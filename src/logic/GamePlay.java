@@ -8,17 +8,17 @@ import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
 import entity.Player;
+import character.CharacterData;
 
 public class GamePlay {
 
 	public static ArrayList<Player> myChar;
 	public static ArrayList<Potion> myPotion;
-	public static int levelAllChar = 1;
 	public static int money;
 	public static int healPotion;
 	public static int manaPotion;
 
-	public GamePlay() {
+	public static void createGamePlay() {
 		myChar = new ArrayList<>();
 		myPotion = new ArrayList<>();
 		money = 0;
@@ -26,80 +26,63 @@ public class GamePlay {
 		manaPotion = 0;
 		myPotion.add(new HealPotion());
 	}
-
-	public void addCharacter(Player player) {
-		myChar.add(player);
+	
+	public static boolean haveTank() {
+		for (Player player : GamePlay.myChar) {
+			if (player instanceof Tank) {
+				return true;
+			}
+		}
+		return false;
 	}
-
-	public void addPotion(Potion potion) {
+	
+	public static Player findTank() {
+		for (Player player : GamePlay.myChar) {
+			if (player instanceof Tank) {
+				return player;
+			}
+		}
+		return null;
+	}
+	
+	public static void addChooseCharacter(Player player) {
+		myChar.add(player);
+		CharacterData.updateAllChooseCharacter(player);
+	}
+	
+	public static void addPotion(Potion potion) {
+		updateAddPotion(potion);
 		myPotion.add(potion);
 	}
-
-	public static void updateCharacter() {
+	
+	public static void updateCharacterPerTurn() {
 		for (Player player : myChar) {
 			if (player instanceof Tank) {
+				((Tank) player).updateIsTuant();
 				((Tank) player).updateIsArmor();
 			}
 			if (player instanceof Assassin) {
 				((Assassin) player).updateIsCheer();
 			}
-			player.updateIsAlive();
-			if (!player.isAlive()) {
-				//do something when character die
-				
-				
-				
-				//
-			}
 		}
 	}
 	
-	public static void updatePotion() {
-		int healPotion = 0;
-		int manaPotion = 0;
-		for (Potion potion : myPotion) {
-			if (potion instanceof HealPotion) {
-				healPotion += 1;
-			}
-			if (potion instanceof ManaPotion) {
-				manaPotion += 1;
-			}
+	public static void updateAddPotion(Potion potion) {
+		if (potion instanceof HealPotion) {
+			healPotion += 1;
 		}
-		GamePlay.healPotion = healPotion;
-		GamePlay.manaPotion = manaPotion;
+		if (potion instanceof ManaPotion) {
+			manaPotion += 1;
+		}
 	}
 	
-
-	public static ArrayList<Player> getMyChar() {
-		return myChar;
-	}
-	public static void setMyChar(ArrayList<Player> myChar) {
-		GamePlay.myChar = myChar;
-	}
-	public static int getMoney() {
-		return money;
-	}
-	public static void setMoney(int money) {
-		GamePlay.money = money;
-	}
-	public static ArrayList<Potion> getMyPotion() {
-		return myPotion;
-	}
-	public static void setMyPotion(ArrayList<Potion> myPotion) {
-		GamePlay.myPotion = myPotion;
-	}
-	
-	
-	
-
 	public static boolean isAllCharacterDead() {
-		boolean allDead = true;
 		for (Player player : myChar) {
 			if (player.isAlive()) {
-				allDead = false;
+				return false;
 			}
 		}
-		return allDead;
+		return true;
 	}
 
 	public static int getHealPotion() {
@@ -110,11 +93,16 @@ public class GamePlay {
 		return manaPotion;
 	}
 
-	
+	public static int getMoney() {
+		return money;
+	}
 
-	
+	public static ArrayList<Potion> getMyPotion() {
+		return myPotion;
+	}
 
-	
-
+	public static ArrayList<Player> getMyChar() {
+		return myChar;
+	}
 
 }

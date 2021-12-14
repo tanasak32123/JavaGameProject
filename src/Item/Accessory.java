@@ -12,8 +12,8 @@ public class Accessory extends Equipment implements Equipable{
 		bonusDefense = 0;
 	}
 	
-	public Accessory(String name,String description,int price,int bonusDamage,int bonusDefense) {
-		super(name,description,price);
+	public Accessory(String name,String description,int price,int bonusDamage,int bonusDefense,String image) {
+		super(name,description,price,image);
 		this.bonusDamage = bonusDamage;
 		this.bonusDefense = bonusDefense;
 	}
