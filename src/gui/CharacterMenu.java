@@ -173,6 +173,7 @@ public class CharacterMenu extends BorderPane {
 
 	}
 	
+	
 
 
 }
