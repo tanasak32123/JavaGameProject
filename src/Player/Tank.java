@@ -6,8 +6,6 @@ public class Tank extends Player {
 
 	private String nameSkill1;
 	private String nameSkill2;
-	private boolean canSkill1;
-	private boolean canSkill2;
 	private boolean isTaunt;
 	private int cooldownTaunt;
 	private boolean isArmor;
@@ -24,39 +22,43 @@ public class Tank extends Player {
 		cooldownArmor = 0;
 	}
 
-	public void setCanSkill1() {
+	public boolean canSkill1() {
 		if (mana < 10)
-			canSkill1 = false;
+			return false;
 		else
-			canSkill1 = true;
+			return true;
 	}
 
-	public void setCanSkill2() {
+	public boolean canSkill2() {
 		if (level < 3 || mana < 15)
-			canSkill2 = false;
+			return false;
 		else
-			canSkill2 = true;
+			return true;
 	}
 
 	@Override
-	public void useSkill1(Object o1) {
+	public boolean useSkill1(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1.equals(this)) {
+		if (o1.equals(this) && canSkill1()) {
 			isTaunt = true;
 			cooldownTaunt = 2;
 			mana -= 10;
+			return true;
 		}
+		return false;
 	}
 
 	@Override
-	public void useSkill2(Object o1) {
+	public boolean useSkill2(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1.equals(this)) {
+		if (o1.equals(this) && canSkill2()) {
 			isArmor = true;
 			cooldownArmor = 2;
 			setDefense(getDefense() + 50);
 			mana -= 15;
+			return true;
 		}
+		return false;
 	}
 
 	public void updateIsArmor() {
@@ -86,14 +88,6 @@ public class Tank extends Player {
 
 	public String getNameSkill2() {
 		return nameSkill2;
-	}
-
-	public boolean isCanSkill1() {
-		return canSkill1;
-	}
-
-	public boolean isCanSkill2() {
-		return canSkill2;
 	}
 
 	public boolean isTaunt() {

@@ -6,8 +6,6 @@ public class Healer extends Player {
 
 	private String nameSkill1;
 	private String nameSkill2;
-	private boolean canSkill1;
-	private boolean canSkill2;
 
 	public Healer(int level) {
 		super("Nami", "This character has ability to heal your team.", 140 * condi(level), 140 * condi(level),
@@ -15,30 +13,43 @@ public class Healer extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Sympathy";
 		nameSkill2 = "Revive";
-		setCanSkill1();
-		setCanSkill2();
 	}
 
-	public boolean isCanSkill1() {
-		return canSkill1;
-	}
-
-	public void setCanSkill1() {
+	public boolean canSkill1() {
 		if (mana < 15)
-			canSkill1 = false;
+			return false;
 		else
-			canSkill1 = true;
+			return true;
 	}
 
-	public boolean isCanSkill2() {
-		return canSkill2;
-	}
-
-	public void setCanSkill2() {
+	public boolean canSkill2() {
 		if (level < 3 || mana < 30)
-			canSkill2 = false;
+			return false;
 		else
-			canSkill2 = true;
+			return true;
+	}
+
+	@Override
+	public boolean useSkill1(Object o1) {
+		if (o1 instanceof Player && canSkill1()) {
+			Player player = (Player) o1;
+			setMana(getMana() - 15);
+			player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + 50));
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean useSkill2(Object o1) {
+		// TODO Auto-generated method stub
+		if (o1 instanceof Player && canSkill2()) {
+			Player player = (Player) o1;
+			player.setAlive(true);
+			mana -= 30;
+			return true;
+		}
+		return false;
 	}
 
 	public String getNameSkill1() {
@@ -47,25 +58,6 @@ public class Healer extends Player {
 
 	public String getNameSkill2() {
 		return nameSkill2;
-	}
-
-	@Override
-	public void useSkill1(Object o1) {
-		if (o1 instanceof Player) {
-			Player player = (Player) o1;
-			setMana(getMana() - 15);
-			player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + 50));
-		}
-	}
-
-	@Override
-	public void useSkill2(Object o1) {
-		// TODO Auto-generated method stub
-		if (o1 instanceof Player) {
-			Player player = (Player) o1;
-			player.setAlive(true);
-			mana -= 30;
-		}
 	}
 
 }

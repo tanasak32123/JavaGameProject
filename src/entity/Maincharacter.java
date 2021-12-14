@@ -1,6 +1,8 @@
 package entity;
 
-public class Maincharacter {
+import interfaces.IsAlive;
+
+public class Maincharacter implements IsAlive{
 
 	protected String name;
 	protected String description;
@@ -11,7 +13,6 @@ public class Maincharacter {
 	protected double attack;
 	protected double defense;
 	protected PlayType type;
-	protected boolean isAlive;
 
 	public Maincharacter() {
 		setName("Unknown");
@@ -22,7 +23,6 @@ public class Maincharacter {
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
-		isAlive = false;
 		setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
 	}
 
@@ -36,23 +36,14 @@ public class Maincharacter {
 		this.maxMana = maxMana;
 		this.attack = attack;
 		this.defense = defense;
-		isAlive = true;
 		this.type = PlayType.values()[(int) (Math.random() * PlayType.values().length)];
 	}
 
-	public void updateIsAlive() {
-		if (health > 0) {
-			isAlive = true;
-		} else
-			isAlive = false;
-	}
-
 	public boolean isAlive() {
-		return isAlive;
-	}
-
-	public void setAlive(boolean isAlive) {
-		this.isAlive = isAlive;
+		if (health <= 0) {
+			return false;
+		}
+		return true;
 	}
 
 	public String getName() {

@@ -2,7 +2,7 @@ package entity;
 
 import javafx.scene.control.ProgressBar;
 
-public abstract class Monster extends Maincharacter {
+public abstract class Monster extends Maincharacter{
 	private ProgressBar healthBar;
 
 	public Monster(String name, String description, double health, double maxHealth, double mana, double maxMana,

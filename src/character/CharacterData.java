@@ -12,7 +12,7 @@ public class CharacterData {
 
 	public static ArrayList<Player> allChooseCharacter;
 	
-	public static void createCharacterData() {
+	public static void createChooseCharacterData() {
 		Player tank = new Tank(1);
 		Player archer = new Archer(1);
 		Player healer = new Healer(1);
@@ -26,8 +26,14 @@ public class CharacterData {
 		allChooseCharacter.add(assassin);
 	}
 	
-	public void updateAllChooseCharacter(Player player) {
-		
+	public static void updateAllChooseCharacter(Player player) {
+		allChooseCharacter.remove(player);
+		levelAllChar(allChooseCharacter);
 	}
 	
+	public static void levelAllChar(ArrayList<Player> allChar) {
+		for (Player player : allChar) {
+			player.leveup();
+		}
+	}
 }

@@ -2,9 +2,9 @@ package entity;
 
 import Equipment.Accessory;
 import Equipment.Armor;
-import Equipment.Equipable;
 import Equipment.Equipment;
 import Equipment.Weapon;
+import interfaces.Equipable;
 import javafx.scene.control.ProgressBar;
 
 public abstract class Player extends Maincharacter implements Equipable {
@@ -18,9 +18,9 @@ public abstract class Player extends Maincharacter implements Equipable {
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense, int level) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
-		equipItem(new Weapon());
-		equipItem(new Armor());
-		equipItem(new Accessory());
+		weapon = new Weapon();
+		armor = new Armor();
+		accessory = new Accessory();
 		this.level = level;
 		this.lifesteal = 0;
 	}
@@ -78,19 +78,21 @@ public abstract class Player extends Maincharacter implements Equipable {
 		return 0;
 	};
 
-	public abstract void useSkill1(Object o1);
+	public abstract boolean useSkill1(Object o1);
 
-	public abstract void useSkill2(Object o1);
+	public abstract boolean useSkill2(Object o1);
 
 	public int getLifesteal() {
 		return lifesteal;
 	}
 
 	public void setLifesteal(int lifesteal) {
-		if (lifesteal < 0)
-			lifesteal = 0;
-		else
+		if (lifesteal < 0) {
+			this.lifesteal = 0;
+		}
+		else {
 			this.lifesteal = lifesteal;
+		}
 	}
 
 	public Weapon getWeapon() {

@@ -8,8 +8,6 @@ public class Archer extends Player {
 
 	private String nameSkill1;
 	private String nameSkill2;
-	private boolean canSkill1;
-	private boolean canSkill2;
 
 	public Archer(int level) {
 		super("Sylvanas", "This character has a lot of damge,but low hp and def.", 110 * condi(level),
@@ -17,53 +15,47 @@ public class Archer extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Make It Rain";
 		nameSkill2 = "Hunt The Mark";
-		setCanSkill1();
-		setCanSkill2();
 	}
 
-	public boolean isCanSkill1() {
-		return canSkill1;
-	}
-
-	public void setCanSkill1() {
+	public boolean canSkill1() {
 		if (mana < 15)
-			canSkill1 = false;
+			return false;
 		else
-			canSkill1 = true;
+			return true;
 	}
 
-	public boolean isCanSkill2() {
-		return canSkill2;
-	}
-
-	public void setCanSkill2() {
+	public boolean canSkill2() {
 		if (level < 3 || mana < 30)
-			canSkill2 = false;
+			return false;
 		else
-			canSkill2 = true;
+			return true;
 	}
 
 	@Override
-	public void useSkill1(Object o1) {
+	public boolean useSkill1(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1 instanceof ArrayList) {
+		if (o1 instanceof ArrayList && canSkill1()) {
 			@SuppressWarnings("unchecked")
 			ArrayList<Monster> allMonster = (ArrayList<Monster>) o1;
 			for (Monster monster : allMonster) {
 				monster.setHealth(monster.getHealth() - 40);
 			}
 			mana -= 15;
+			return true;
 		}
+		return false;
 	}
 
 	@Override
-	public void useSkill2(Object o1) {
+	public boolean useSkill2(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1 instanceof Monster) {
+		if (o1 instanceof Monster && canSkill2()) {
 			Monster monster = (Monster) o1;
 			monster.setHealth(monster.getHealth() - 100);
 			mana -= 30;
+			return true;
 		}
+		return false;
 	}
 
 	public String getNameSkill1() {

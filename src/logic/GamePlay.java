@@ -8,17 +8,17 @@ import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
 import entity.Player;
+import character.CharacterData;
 
 public class GamePlay {
 
 	public static ArrayList<Player> myChar;
 	public static ArrayList<Potion> myPotion;
-	public static int levelAllChar = 1;
 	public static int money;
 	public static int healPotion;
 	public static int manaPotion;
 
-	public GamePlay() {
+	public static void createGamePlay() {
 		myChar = new ArrayList<>();
 		myPotion = new ArrayList<>();
 		money = 0;
@@ -27,8 +27,9 @@ public class GamePlay {
 		myPotion.add(new HealPotion());
 	}
 
-	public void addCharacter(Player player) {
+	public void addChooseCharacter(Player player) {
 		myChar.add(player);
+		CharacterData.updateAllChooseCharacter(player);
 	}
 
 	public static void addPotion(Potion potion) {
@@ -38,19 +39,19 @@ public class GamePlay {
 
 	public static void updateCharacter() {
 		for (Player player : myChar) {
-			if (player instanceof Tank) {
-				((Tank) player).updateIsArmor();
-			}
-			if (player instanceof Assassin) {
-				((Assassin) player).updateIsCheer();
-			}
-			player.updateIsAlive();
 			if (!player.isAlive()) {
 				//do something when character die
 				
 				
 				
 				//
+			} else {
+				if (player instanceof Tank) {
+					((Tank) player).updateIsArmor();
+				}
+				if (player instanceof Assassin) {
+					((Assassin) player).updateIsCheer();
+				}
 			}
 		}
 	}

@@ -1,8 +1,5 @@
 package Equipment;
 
-import entity.Player;
-import interfaces.InShop;
-
 public class Accessory extends Equipment {
 	private int bonusDamage;
 	private int bonusDefense;
@@ -16,12 +13,6 @@ public class Accessory extends Equipment {
 		super(name,description,price);
 		this.bonusDamage = bonusDamage;
 		this.bonusDefense = bonusDefense;
-	}
-
-	public void equipItem(Player selectedCharacter) {
-		// set accessory to character
-		selectedCharacter.setAttack(selectedCharacter.getAttack() + (bonusDamage - selectedCharacter.getAccessory().getBonusDamage()));
-		selectedCharacter.setDefense(selectedCharacter.getDefense() + (bonusDefense - selectedCharacter.getAccessory().getBonusDefense()));
 	}
 	
 	public String getBonusDamageText() {

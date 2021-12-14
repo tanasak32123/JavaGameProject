@@ -1,4 +1,4 @@
-package Potion;
+package interfaces;
 
 import entity.Maincharacter;
 

@@ -1,7 +1,5 @@
 package Equipment;
 
-import entity.Player;
-
 public class Armor extends Equipment {
 	private int bonusDamage;
 	private int defense;

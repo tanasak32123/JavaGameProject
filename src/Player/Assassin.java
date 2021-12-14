@@ -8,8 +8,6 @@ import logic.GamePlay;
 public class Assassin extends Player {
 	private String nameSkill1;
 	private String nameSkill2;
-	private boolean canSkill1;
-	private boolean canSkill2;
 	private boolean isCheer;
 	private int cooldownCheer;
 
@@ -19,29 +17,27 @@ public class Assassin extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Punch The Line";
 		nameSkill2 = "Cheer Up";
-		setCanSkill1();
-		setCanSkill2();
 		isCheer = false;
 		cooldownCheer = 0;
 	}
 
-	public void setCanSkill1() {
+	public boolean canSkill1() {
 		if (mana < 15)
-			canSkill2 = false;
+			return false;
 		else
-			canSkill2 = true;
+			return true;
 	}
 
-	public void setCanSkill2() {
+	public boolean canSkill2() {
 		if (level < 3 || mana < 20)
-			canSkill2 = false;
+			return false;
 		else
-			canSkill2 = true;
+			return true;
 	}
 
 	@Override
-	public void useSkill1(Object o1) {
-		if (o1 instanceof Monster) {
+	public boolean useSkill1(Object o1) {
+		if (o1 instanceof Monster && canSkill1()) {
 			Monster monster = (Monster) o1;
 			setMana(getMana() - 15);
 			int damage = (int)(this.getAttack() * ((Math.random() * 3)));
@@ -49,12 +45,14 @@ public class Assassin extends Player {
 				monster.setHealth(monster.getHealth() + monster.getDefense() - damage);
 			}
 			mana -= 15;
+			return true;
 		}
+		return false;
 	}
 
 	@Override
-	public void useSkill2(Object o1) {
-		if (o1 instanceof ArrayList) {
+	public boolean useSkill2(Object o1) {
+		if (o1 instanceof ArrayList && canSkill2()) {
 			@SuppressWarnings("unchecked")
 			ArrayList<Player> allPlayer = (ArrayList<Player>) o1;
 			for (Player p : allPlayer) {
@@ -63,7 +61,9 @@ public class Assassin extends Player {
 			isCheer = true;
 			cooldownCheer = 2;
 			mana -= 20;
+			return true;
 		}
+		return false;
 	}
 
 	public void updateIsCheer() {
@@ -80,14 +80,6 @@ public class Assassin extends Player {
 		}
 	}
 	
-	public boolean isCanSkill1() {
-		return canSkill1;
-	}
-
-	public boolean isCanSkill2() {
-		return canSkill2;
-	}
-
 	public String getNameSkill1() {
 		return nameSkill1;
 	}

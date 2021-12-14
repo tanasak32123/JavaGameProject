@@ -1,7 +1,5 @@
 package Equipment;
 
-import entity.Player;
-
 public class Weapon extends Equipment {
 	private int damage;
 	private int lifesteal;

@@ -1,6 +1,7 @@
 package Potion;
 
 import entity.Maincharacter;
+import interfaces.Usable;
 import logic.GamePlay;
 
 public class HealPotion extends Potion implements Usable{

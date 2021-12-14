@@ -2,6 +2,7 @@ package Potion;
 
 
 import entity.Maincharacter;
+import interfaces.Usable;
 import logic.GamePlay;
 
 public class ManaPotion extends Potion implements Usable{
