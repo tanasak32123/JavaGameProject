@@ -2,10 +2,12 @@ package entity;
 
 import Equipment.Accessory;
 import Equipment.Armor;
+import Equipment.Equipable;
+import Equipment.Equipment;
 import Equipment.Weapon;
 import javafx.scene.control.ProgressBar;
 
-public abstract class Player extends Maincharacter {
+public abstract class Player extends Maincharacter implements Equipable {
 	private int lifesteal;
 	private Weapon weapon;
 	private Armor armor;
@@ -16,59 +18,41 @@ public abstract class Player extends Maincharacter {
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense, int level) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense);
-		(new Weapon()).equipItem(this);
-		(new Accessory()).equipItem(this);
-		(new Armor()).equipItem(this);
+		equipItem(new Weapon());
+		equipItem(new Armor());
+		equipItem(new Accessory());
 		this.level = level;
 		this.lifesteal = 0;
 	}
 
-	public int getLifesteal() {
-		return lifesteal;
-	}
-
-	public void setLifesteal(int lifesteal) {
-		this.lifesteal = lifesteal;
-	}
-
-	public Weapon getWeapon() {
-		return weapon;
+	public void equipItem(Equipment equipment) {
+		if (equipment instanceof Weapon) {
+			setWeapon((Weapon) equipment);
+		}
+		if (equipment instanceof Armor) {
+			setArmor((Armor) equipment);
+		}
+		if (equipment instanceof Accessory) {
+			setAccessory((Accessory) equipment);
+		}
 	}
 
 	public void setWeapon(Weapon weapon) {
+		setAttack(attack + (weapon.getDamage() - this.weapon.getDamage()));
+		setLifesteal(lifesteal + (weapon.getLifesteal() - this.weapon.getLifesteal()));
 		this.weapon = weapon;
 	}
 
-	public Armor getArmor() {
-		return armor;
-	}
-
 	public void setArmor(Armor armor) {
+		setAttack(attack + (armor.getBonusDamage() - this.armor.getBonusDamage()));
+		setDefense(defense + (armor.getDefense() - this.armor.getDefense()));
 		this.armor = armor;
 	}
 
-	public Accessory getAccessory() {
-		return accessory;
-	}
-
 	public void setAccessory(Accessory accessory) {
+		setAttack(attack + (accessory.getBonusDamage() - this.accessory.getBonusDamage()));
+		setDefense(defense + (accessory.getBonusDamage() - this.accessory.getBonusDefense()));
 		this.accessory = accessory;
-	}
-
-	public ProgressBar getHealthBar() {
-		return healthBar;
-	}
-
-	public void setHealthBar(ProgressBar healthBar) {
-		this.healthBar = healthBar;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
 	}
 
 	public void leveup() {
@@ -97,5 +81,44 @@ public abstract class Player extends Maincharacter {
 	public abstract void useSkill1(Object o1);
 
 	public abstract void useSkill2(Object o1);
+
+	public int getLifesteal() {
+		return lifesteal;
+	}
+
+	public void setLifesteal(int lifesteal) {
+		if (lifesteal < 0)
+			lifesteal = 0;
+		else
+			this.lifesteal = lifesteal;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public Armor getArmor() {
+		return armor;
+	}
+
+	public Accessory getAccessory() {
+		return accessory;
+	}
+
+	public ProgressBar getHealthBar() {
+		return healthBar;
+	}
+
+	public void setHealthBar(ProgressBar healthBar) {
+		this.healthBar = healthBar;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
 
 }

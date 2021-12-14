@@ -12,16 +12,22 @@ public class GameLogic {
 	}
 
 	public static void turnPhase() {
-		while (!(MonsterData.isAllMonsterDead()) || !(GamePlay.isAllCharacterDead())) {
-
+		while (!(MonsterData.isAllMonsterInFieldDead()) || !(GamePlay.isAllCharacterDead())) {
+			for (Player player : GamePlay.myChar) {
+				player.doAction();
+			}
+			
+			for (Monster monster : MonsterData.allMonsterInField) {
+				monster.attackRandom();
+			}
 		}
 
-		if (MonsterData.isAllMonsterDead()) {
+		if (MonsterData.isAllMonsterInFieldDead()) {
 				
 		}
 
 		if (GamePlay.isAllCharacterDead()) {
-
+			
 		}
 	}
 

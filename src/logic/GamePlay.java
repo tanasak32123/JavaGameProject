@@ -31,7 +31,8 @@ public class GamePlay {
 		myChar.add(player);
 	}
 
-	public void addPotion(Potion potion) {
+	public static void addPotion(Potion potion) {
+		updatePotion(potion);
 		myPotion.add(potion);
 	}
 
@@ -54,19 +55,13 @@ public class GamePlay {
 		}
 	}
 	
-	public static void updatePotion() {
-		int healPotion = 0;
-		int manaPotion = 0;
-		for (Potion potion : myPotion) {
-			if (potion instanceof HealPotion) {
-				healPotion += 1;
-			}
-			if (potion instanceof ManaPotion) {
-				manaPotion += 1;
-			}
+	public static void updatePotion(Potion potion) {
+		if (potion instanceof HealPotion) {
+			healPotion += 1;
 		}
-		GamePlay.healPotion = healPotion;
-		GamePlay.manaPotion = manaPotion;
+		if (potion instanceof ManaPotion) {
+			manaPotion += 1;
+		}
 	}
 	
 	public static boolean isAllCharacterDead() {

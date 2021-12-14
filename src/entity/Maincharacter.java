@@ -80,7 +80,9 @@ public class Maincharacter {
 			if (health < 0) {
 				this.health = 0;
 			}
-			this.health = health;
+			else {
+				this.health = health;
+			}
 		} else
 			this.health = maxHealth;
 	}
@@ -101,7 +103,11 @@ public class Maincharacter {
 		if (mana < maxMana) {
 			this.mana = mana;
 		}
-		this.mana = maxMana;
+		else if (mana < 0){
+			this.mana = 0;
+		} else {
+			this.mana = maxMana;
+		}
 	}
 
 	public double getMaxMana() {
@@ -117,7 +123,12 @@ public class Maincharacter {
 	}
 
 	public void setAttack(double attack) {
-		this.attack = attack;
+		if (attack < 0) {
+			this.attack = 0;
+		}
+		else {
+			this.attack = attack;
+		}
 	}
 
 	public double getDefense() {
@@ -125,7 +136,12 @@ public class Maincharacter {
 	}
 
 	public void setDefense(double defense) {
-		this.defense = defense;
+		if (defense < 0) {
+			this.defense = 0;
+		}
+		else {
+			this.defense = defense;
+		}
 	}
 
 	public PlayType getType() {

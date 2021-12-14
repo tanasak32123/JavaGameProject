@@ -1,8 +1,9 @@
 package Equipment;
 
 import entity.Player;
+import interfaces.InShop;
 
-public class Accessory extends Equipment implements Equipable{
+public class Accessory extends Equipment {
 	private int bonusDamage;
 	private int bonusDefense;
 	
@@ -17,14 +18,6 @@ public class Accessory extends Equipment implements Equipable{
 		this.bonusDefense = bonusDefense;
 	}
 
-	public int getBonusDamage() {
-		return bonusDamage;
-	}
-
-	public int getBonusDefense() {
-		return bonusDefense;
-	}
-	
 	public void equipItem(Player selectedCharacter) {
 		// set accessory to character
 		selectedCharacter.setAttack(selectedCharacter.getAttack() + (bonusDamage - selectedCharacter.getAccessory().getBonusDamage()));
@@ -45,8 +38,15 @@ public class Accessory extends Equipment implements Equipable{
 		return " ";
 	}
 	
+	public int getBonusDamage() {
+		return bonusDamage;
+	}
+
+	public int getBonusDefense() {
+		return bonusDefense;
+	}
+	
 	public String toString() {
 		return "You equip" + name + "already.";
 	}
-
 }

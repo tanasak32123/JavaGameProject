@@ -3,6 +3,7 @@ package logic;
 import Monster.ArmorOrc;
 import Monster.BossOrc;
 import Monster.Orc;
+import character.CharacterData;
 import character.MonsterData;
 
 public class GameStage {
@@ -13,7 +14,7 @@ public class GameStage {
 		switch (stage) {
 			case 0:
 				//choose first character
-				
+				CharacterData.createCharacterData();
 				
 				 
 				//

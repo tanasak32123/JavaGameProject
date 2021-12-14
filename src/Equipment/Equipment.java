@@ -1,35 +1,33 @@
 package Equipment;
 
-public abstract class Equipment {
+import interfaces.InShop;
+
+public abstract class Equipment implements InShop{
 	protected String name;
 	protected String description;
 	protected int price;
-	protected boolean isEmpty;
+	protected boolean soldOut;
 	
 	public Equipment() {
 		name = "";
 		description = "";
 		price = 0;
-		isEmpty = false;
+		soldOut = false;
 	}
 	
 	public Equipment(String name,String description,int price) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		isEmpty = false;
+		soldOut = false;
+	}
+	
+	public void isSoldOut() {
+		soldOut = true;
 	}
 	
 	public String getName() {
 		return name;
-	}
-
-	public boolean isEmpty() {
-		return isEmpty;
-	}
-
-	public void setIsEmpty(boolean isEmpty) {
-		this.isEmpty = isEmpty;
 	}
 
 	public int getPrice() {
