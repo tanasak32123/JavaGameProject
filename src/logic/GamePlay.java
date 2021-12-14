@@ -39,19 +39,12 @@ public class GamePlay {
 	
 	public static void updateCharacterPerTurn() {
 		for (Player player : myChar) {
-			if (!player.isAlive()) {
-				//do something when character die
-				
-				
-				
-				//
-			} else {
-				if (player instanceof Tank) {
-					((Tank) player).updateIsArmor();
-				}
-				if (player instanceof Assassin) {
-					((Assassin) player).updateIsCheer();
-				}
+			if (player instanceof Tank) {
+				((Tank) player).updateIsTuant();
+				((Tank) player).updateIsArmor();
+			}
+			if (player instanceof Assassin) {
+				((Assassin) player).updateIsCheer();
 			}
 		}
 	}
@@ -66,13 +59,12 @@ public class GamePlay {
 	}
 	
 	public static boolean isAllCharacterDead() {
-		boolean allDead = true;
 		for (Player player : myChar) {
 			if (player.isAlive()) {
-				allDead = false;
+				return false;
 			}
 		}
-		return allDead;
+		return true;
 	}
 
 	public static int getHealPotion() {
