@@ -37,13 +37,14 @@ import logic.GamePlay;
 public class Fighting extends Pane  {
 	public static Pane ch = new ChooseMons() ;
 	public static Button selectedButton ;
+	public static HBox titt ;
 	public Fighting () {
 		this.setPrefSize(1050, 600);
 		try(InputStream is = Files.newInputStream(Paths.get("res/bg_all.png"))){
 			ImageView img = new ImageView(new Image(is));
 			img.setFitWidth(1050);
 			img.setFitHeight(600);
-			this.getChildren().add(img);
+//			this.getChildren().add(img);
 		}
 		catch(IOException e) {
 			System.out.println("Couldn't load image");
@@ -96,24 +97,35 @@ public class Fighting extends Pane  {
 			atkbutton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					selectedButton = atkbutton ;
-					ch.setVisible(true);
-					
+					if (ch.isVisible()) {
+						ch.setVisible(false);
+					}else {
+						selectedButton = atkbutton ;
+						ch.setVisible(true);
+					}
 					
 				}
 			});
 			skill1button.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					selectedButton = skill1button ;
-					ch.setVisible(true);	
+					if (ch.isVisible()) {
+						ch.setVisible(false);
+					}else {
+						selectedButton = skill1button ;
+						ch.setVisible(true);	
+					}
 				}
 			});
 			skill2button.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					selectedButton = skill2button ;
-					ch.setVisible(true);	
+					if (ch.isVisible()) {
+						ch.setVisible(false);
+					}else {
+						selectedButton = skill2button ;
+						ch.setVisible(true);	
+					}
 				}
 			});
 			
@@ -137,20 +149,23 @@ public class Fighting extends Pane  {
 			catch(IOException e) {
 				System.out.println("Couldn't load image");
 			}int y =0 ;
-			HBox titl = new tit(GamePlay.myChar) ;
-			titl.setTranslateX(15);
-			titl.setTranslateY(10+y) ;
-			this.getChildren().add(titl) ;
+			titt = new tit(GamePlay.myChar) ;
+			titt.setTranslateX(15);
+			titt.setTranslateY(10+y) ;
+			this.getChildren().add(titt) ;
 
 		}
 	}
 	
 	private static class tit extends HBox {
+		public Text na ;
+		public Text hp ;
+		public Text ma ;
 		public tit(Player o) {
 			this.setPrefSize(400, 35);
-			Text na = new Text(o.getName()) ;
-			Text hp = new Text(o.getHealth()+" / "+o.getMaxHealth()) ;
-			Text ma = new Text(o.getMana()+" / "+o.getMaxMana()) ;
+			na = new Text(o.getName()) ;
+			hp = new Text(o.getHealth()+" / "+o.getMaxHealth()) ;
+			ma = new Text(o.getMana()+" / "+o.getMaxMana()) ;
 			na.setFill(Color.WHITE) ;
 			hp.setFill(Color.WHITE) ;
 			ma.setFill(Color.WHITE) ;
@@ -161,6 +176,7 @@ public class Fighting extends Pane  {
 			this.getChildren().addAll(na,hp,ma) ;
 		}
 	}
+	
 	 
 	private static class PotionBox extends Pane {
 		

@@ -8,7 +8,6 @@ import javafx.scene.canvas.GraphicsContext;
 
 public interface IRenderable
 {
-    int getZ();
     
     void draw(final GraphicsContext p0);
     

@@ -166,7 +166,7 @@ public class ShopUi extends StackPane {
 			tie.setFont(Font.font("Helvetica", FontWeight.BLACK, 10));
 			wow.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-			try (InputStream is = Files.newInputStream(Paths.get(manao.getImage()));
+			try (InputStream is = Files.newInputStream(Paths.get(i.getImage()));
 					InputStream ia = Files.newInputStream(Paths.get("res/depositphotos_82698376-stock-photo-watercolor-purple-background-for-text.jpg"));
 				){
 				ImageView imagr = new ImageView(new Image(is));

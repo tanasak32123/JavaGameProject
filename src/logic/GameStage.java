@@ -14,7 +14,8 @@ import Shop.Shop;
 
 public class GameStage {
 
-	public static int stage = 1;
+	public static int stage = 0;
+	public static int turn = 0;
 
 //	public static void runGameStage() {
 //		while (!GameLogic.winner && !GameLogic.loser) {
@@ -35,15 +36,46 @@ public class GameStage {
 //		}
 //	}
 
+	public static void changeturn(int t) {
+		turn = t;
+	}
+
+	public static void updateturn() {
+		switch(turn) {
+			case 0 :{
+				changeturn(1);
+				updateturn();
+				break ;
+				
+			}
+			case 1 :{
+				(new AnimationTimer() {
+		              public void handle(final long now) {
+		                    if (GameLogic.isselectemonster) {
+		                    	GameLogic.isselectemonster = false; 
+		                    	this.stop();
+		                    }
+		                }
+		         }).start();
+				break;
+			}
+			case 2: {
+				System.out.println("turn2");
+				GameLogic.actionmons();
+				changeturn(1);
+				updateturn();
+				break ;
+			}
+		}if (GameCanvas.gc!=null)GameCanvas.draw() ;
+	}
+
 	public static void updateGameStage() {
-		System.out.println(stage);
+		GameLogic.endStage = false;
+		resetToNewStage();
 		switch (stage) {
-//		case 0: {
-//			// choose first character
-//		
-//			//
-//			break;
-//		}
+		case 0: {
+			break;
+		}
 		case 1: {
 			MonsterData.allMonsterInField.add(new Orc());
 			MonsterData.allMonsterInField.add(new Orc());
@@ -103,72 +135,68 @@ public class GameStage {
 		}
 		}
 		stage++;
-
 	}
 
-	public static void duringStage(int stage) {
-		(new AnimationTimer() {
-            public void handle(final long now) {
-            	System.out.println("dqdqq");
-    			switch (stage) {
-    			case 1:
-    			case 2: {
-    				GameCanvas.draw();
-    				GameLogic.actionInTurnPhase();
-    			}
-    			case 3: {
-    				// enter finish button
+	public static void duringStage() {
+		switch (stage) {
+		case 1:
+		case 2: {
+			GameCanvas.draw();
+			GameLogic.actionInTurnPhase();
+		}
+		case 3: {
+			// enter finish button
 
-    				
-    				GameLogic.endStage = true;
-    			}
-    			case 4:
-    			case 5: {
-    				GameCanvas.draw();
-    				GameLogic.actionInTurnPhase();
-    			}
-    			case 6: {
-    				// enter finish button
+			GameLogic.endStage = true;
+		}
+		case 4:
+		case 5: {
+			GameCanvas.draw();
+			GameLogic.actionInTurnPhase();
+		}
+		case 6: {
+			// enter finish button
 
-    				//
-    				GameLogic.endStage = true;
-    			}
-    			case 7:
-    			case 8: {
-    				GameCanvas.draw();
-    				GameLogic.actionInTurnPhase();
-    			}
-    			case 9: {
-    				// enter finish button
+			//
+			GameLogic.endStage = true;
+		}
+		case 7:
+		case 8: {
+			GameCanvas.draw();
+			GameLogic.actionInTurnPhase();
+		}
+		case 9: {
+			// enter finish button
 
-    				//
-    				GameLogic.endStage = true;
-    			}
-    			case 10: {
-    				GameLogic.actionInTurnPhase();
-    				this.stop();
-    			}
-    			}
-    			System.out.println("fagfagaad122gag");
-            }
-        }).start();
-		
-		GameLogic.endStage = false;
-
-		resetToNewStage();
+			//
+			GameLogic.endStage = true;
+		}
+		case 10: {
+			GameLogic.actionInTurnPhase();
+		}
+		}
 	}
 
-//	public static void resetPlayerToNewStage() {
-//		if (GamePlay.myChar != null) {
-//			for (Player player : GamePlay.myChar) {
-//				if (!player.isAlive()) {
-//					player.setHealth(player.getMaxHealth() * 0.2);
-//					player.setMana(player.getMaxMana() * 0.5);
-//				}
-//				resetAbility(player);
-//			}
-//		}
-//	}
+	/*
+	 * public static void duringStage(int stage) { (new AnimationTimer() { public
+	 * void handle(final long now) { System.out.println("dqdqq"); switch (stage) {
+	 * case 1: case 2: { GameCanvas.draw(); GameLogic.actionInTurnPhase(); } case 3:
+	 * { // enter finish button
+	 * 
+	 * 
+	 * GameLogic.endStage = true; } case 4: case 5: { GameCanvas.draw();
+	 * GameLogic.actionInTurnPhase(); } case 6: { // enter finish button
+	 * 
+	 * // GameLogic.endStage = true; } case 7: case 8: { GameCanvas.draw();
+	 * GameLogic.actionInTurnPhase(); } case 9: { // enter finish button
+	 * 
+	 * // GameLogic.endStage = true; } case 10: { GameLogic.actionInTurnPhase();
+	 * this.stop(); } } System.out.println("fagfagaad122gag"); } }).start();
+	 * 
+	 * GameLogic.endStage = false;
+	 * 
+	 * resetToNewStage(); }
+	 */
 
 	public static void resetAbility(Player player) {
 		if (player instanceof Tank) {
@@ -190,13 +218,12 @@ public class GameStage {
 	}
 
 	public static void resetToNewStage() {
-		resetAbility(GamePlay.myChar) ;
+		resetAbility(GamePlay.myChar);
 		MonsterData.allMonsterInField.clear();
 	}
 
 	public static void clearAllData() {
 		MonsterData.allMonsterInField.clear();
-//		CharacterData.allChooseCharacter.clear();
 		GamePlay.createGamePlay();
 	}
 

@@ -20,11 +20,6 @@ public class ArmorOrc extends Monster {
 		GamePlay.money += 50;
 	}
 
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void draw(GraphicsContext p0) {

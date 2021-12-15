@@ -31,7 +31,6 @@ public class RenderableHolder {
 
 
     public void add(IRenderable entity) {
-        System.out.println("add");
         entities.add(entity);
         Collections.sort(entities, comparator);
     }

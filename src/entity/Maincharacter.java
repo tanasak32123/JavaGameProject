@@ -77,6 +77,7 @@ public class Maincharacter {
 	}
 
 	public boolean isAlive() {
+		updateIsAlive();
 		return isAlive;
 	}
 
@@ -108,8 +109,9 @@ public class Maincharacter {
 		if (health < maxHealth) {
 			if (health < 0) {
 				this.health = 0;
-			}
-			this.health = health;
+			}else {
+				this.health = health;
+			}			
 		} else
 			this.health = maxHealth;
 	}

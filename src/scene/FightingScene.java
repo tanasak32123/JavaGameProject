@@ -1,7 +1,9 @@
 package scene;
 
 
+import application.SystemCache;
 import character.MonsterData;
+import gui.Fighting;
 import gui.GameCanvas;
 
 import gui.MainMenu;
@@ -33,6 +35,7 @@ public class FightingScene extends Scene {
 		new GameLogic() ;
 	    this.setRoot((Parent)(this.stackPane = new StackPane()));
 	    this.stackPane.setPrefSize(1050, 600); 
-	    this.stackPane.getChildren().addAll(new GameCanvas());
+	    application.SystemCache.fight = new Fighting() ;
+	    this.stackPane.getChildren().addAll(new GameCanvas(),SystemCache.fight);
     }
 }

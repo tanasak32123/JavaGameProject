@@ -146,6 +146,8 @@ public class CharacterMenu extends BorderPane {
 					}else   {
 						GamePlay.myChar = new Healer(1) ;
 					}
+					GameStage.turn = 1;
+					GameStage.updateturn();
 					Scene fight = new FightingScene() ;
 					Main.sceneHolder.switchScene(fight) ;
 					

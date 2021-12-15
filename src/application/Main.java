@@ -15,11 +15,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		
-		Scene scene = new Scene(new ShopUi());
-//		(this.sceneHolder = new SceneHolder(primaryStage)).initialize(); 
+		new SystemCache() ;
+//		Scene scene = new Scene(new ShopUi());
+		(this.sceneHolder = new SceneHolder(primaryStage)).initialize(); 
 		primaryStage.setTitle("POD AND NOON");
-		primaryStage.setScene(scene);
+//		primaryStage.setScene(scene);
 		primaryStage.show();
+		
 		
 	}
 	

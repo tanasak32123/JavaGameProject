@@ -137,12 +137,6 @@ public class Tank extends Player {
 	}
 
 	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void draw(GraphicsContext p0) {
 		Image img  ;
 		try (InputStream is = Files.newInputStream(Paths.get("res/Tank.png"))) {

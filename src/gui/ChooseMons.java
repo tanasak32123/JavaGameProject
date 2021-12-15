@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import logic.GameLogic;
 import logic.GamePlay;
+import logic.GameStage;
 
 public class ChooseMons extends Pane{
 	
@@ -48,12 +49,20 @@ public class ChooseMons extends Pane{
 				public void handle(ActionEvent arg0) {
 					if (Fighting.selectedButton.getText().equals("Attack")) {
 						GamePlay.myChar.attack(e) ;
+						Fighting.ch.setVisible(false);
+						System.out.println(GamePlay.myChar.getHealth());
+//						GameLogic.actionmons() ;
 					}else if (Fighting.selectedButton.getText().equals("Skill1")) {
 						GamePlay.myChar.useSkill1(e) ;
+						Fighting.ch.setVisible(false);
+//						GameLogic.actionmons() ;
 					}else {
 						GamePlay.myChar.useSkill2(e) ;
+						Fighting.ch.setVisible(false);
+//						GameLogic.actionmons() ;
 					}
-					
+					GameStage.changeturn(2);
+					GameStage.updateturn();
 				}
 			});
 			this.getChildren().add(g) ;

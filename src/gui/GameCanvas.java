@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Monster.Orc;
 import Player.Archer;
 import Player.Assassin;
+import application.SystemCache;
 import character.MonsterData;
 import entity.Monster;
 import entity.Player;
@@ -28,7 +29,8 @@ import logic.RenderableHolder;
 
 
 public class GameCanvas extends Canvas {
-	private static GraphicsContext gc;
+	public static GraphicsContext gc;
+	
 	
 	public GameCanvas() {
 	        super();
@@ -37,19 +39,24 @@ public class GameCanvas extends Canvas {
 	        this.setHeight(600); 
 	        this.setup();
 	        
+	        
 	    }
 	
 	public void setup() {
-//		GameStage.updateGameStage() ;
-//		Archer ard = new Archer(new Point2D(100,100)) ;
-
-//		RenderableHolder.getInstance().add(ard); 
-		GameStage.duringStage(GameStage.stage);
+		GameStage.updateGameStage() ;
+		GameStage.duringStage();
+		GameStage.changeturn(0);
+		GameStage.updateturn();
+		
 		
 	}
 	
 	
 	public static void draw() {
+		update();
+		System.out.println(GameStage.turn);
+		
+
 		drawBackground();
 		int x=0 ,y=0 ;
 //		MonsterData.allMonsterInField.add(new Orc());
@@ -58,7 +65,7 @@ public class GameCanvas extends Canvas {
 		RenderableHolder.getInstance().add((IRenderable) GamePlay.myChar);
 		if (MonsterData.allMonsterInField!=null) {
 			for (Monster e :MonsterData.allMonsterInField) {
-				e.setPosition(new Point2D(725-x, 325-y));
+				e.setPosition(new Point2D(600-x, 250-y));
 				RenderableHolder.getInstance().add((IRenderable)e);
 				x -= 100 ; y+= 100 ;
 			}	
@@ -72,12 +79,13 @@ public class GameCanvas extends Canvas {
 	    RenderableHolder.getInstance().getEntities().clear(); 
 	}
 	
-	private void update() {
-//        if(RenderableHolder.getInstance().getGameObjects()!=null) {
-//            for(SolidObject obj: RenderableHolder.getInstance().getGameObjects()) {
-//                
-//            }
-//        }
+	private static void update() {
+		if (MonsterData.allMonsterInField!=null) {
+			for (Monster e :MonsterData.allMonsterInField) {
+			
+			}	
+		}
+		SystemCache.fight.titt
     }
 	
 	private static void drawBackground() {

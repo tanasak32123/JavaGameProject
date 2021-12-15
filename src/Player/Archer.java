@@ -85,11 +85,6 @@ public class Archer extends Player {
 		return nameSkill2;
 	}
 
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void draw(GraphicsContext p0) {

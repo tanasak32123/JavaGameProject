@@ -7,6 +7,7 @@ import Item.Weapon;
 import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
+import character.MonsterData;
 import interfaces.Equipable;
 import interfaces.IRenderable;
 import interfaces.Usable;
@@ -71,6 +72,10 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 			}
 			if (lifesteal > 0) {
 				setHealth(health + lifesteal);
+			}updateIsAlive();
+			if (!isAlive) {
+				MonsterData.getAllMonsterInField().remove(character) ;
+				
 			}
 			return damage;
 		}
