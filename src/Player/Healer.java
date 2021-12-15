@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import entity.Player;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -15,12 +16,18 @@ public class Healer extends Player {
 	private String nameSkill2;
 
 	public Healer(int level) {
-		super("Nami", "This character has ability to heal your team.", 140 * condi(level), 140 * condi(level),
-				140 * condi(level), 140 * condi(level), 10 * condi(level), 60 * condi(level), level, "res/healer.png");
+		super("Nami", "This character has ability to heal your team.", 170 * condi(level), 170 * condi(level),
+				45 * condi(level), 45 * condi(level), 30 * condi(level), 10 * condi(level), level, "res/healer.png");
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Sympathy";
 		nameSkill2 = "Revive";
+		setPosition(new Point2D(100, 100)) ;
 	}
+	
+	public Healer(Point2D point) {
+		setPosition(point);
+	}
+	
 
 	public boolean canSkill1() {
 		if (mana < 15)

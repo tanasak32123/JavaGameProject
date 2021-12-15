@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.PublicKey;
 
 import application.Main;
+import character.CharacterData;
 import constant.SoundHolder;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -26,6 +28,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import logic.GamePlay;
+import logic.GameStage;
 import scene.CharaterMenuScene;
 
 
@@ -37,7 +41,7 @@ public class MainMenu extends Pane {
 	public MainMenu () {
 		this.setPrefSize(1050, 600);
 		if(!SoundHolder.getInstance().bgm.isPlaying()) {
-            SoundHolder.getInstance().bgm.play(0.2);
+            SoundHolder.getInstance().bgm.play(0);
             SoundHolder.getInstance().bgm.setCycleCount(MediaPlayer.INDEFINITE);
         }
 
@@ -60,8 +64,12 @@ public class MainMenu extends Pane {
 		MenuItem play = new MenuItem("PLAY" ) ;
 		MenuItem exit = new MenuItem("EXIT") ;
 		play.setOnMousePressed(event -> {
-			 Scene choosechar = new CharaterMenuScene() ;
-			 Main.sceneHolder.switchScene(choosechar);
+//			GameStage.updateGameStage() ;
+//			GameStage.runGameStage() ;
+			CharacterData.createChooseCharacterData();
+			Scene choosechar = new CharaterMenuScene() ;
+			Main.sceneHolder.switchScene(choosechar);
+			
 			 
 		});
 		exit.setOnMousePressed(event -> {

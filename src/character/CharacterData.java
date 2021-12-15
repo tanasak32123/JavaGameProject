@@ -7,6 +7,7 @@ import Player.Assassin;
 import Player.Healer;
 import Player.Tank;
 import entity.Player;
+import logic.GamePlay;
 
 public class CharacterData {
 
@@ -26,14 +27,14 @@ public class CharacterData {
 		allChooseCharacter.add(assassin);
 	}
 	
-	public static void updateAllChooseCharacter(Player player) {
-		allChooseCharacter.remove(player);
-		levelAllChar(allChooseCharacter);
-	}
+//	public static void updateAllChooseCharacter(Player player) {
+//		allChooseCharacter.remove(player);
+//		GamePlay.myChar.leveup();
+//	}
 	
-	public static void levelAllChar(ArrayList<Player> allChar) {
-		for (Player player : allChar) {
-			player.leveup();
-		}
-	}
+//	public static void levelmyChar(ArrayList<Player> allChar) {
+//		for (Player player : allChar) {
+//			player.leveup();
+//		}
+//	}
 }

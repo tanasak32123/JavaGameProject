@@ -6,7 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import Monster.Orc;
 import Player.Archer;
+import Player.Assassin;
+import character.MonsterData;
+import entity.Monster;
+import entity.Player;
 import interfaces.IRenderable;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -15,38 +20,56 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundSize;
+import javafx.stage.Stage;
+import logic.GameLogic;
+import logic.GamePlay;
+import logic.GameStage;
 import logic.RenderableHolder;
 
 
 public class GameCanvas extends Canvas {
-	private GraphicsContext gc;
+	private static GraphicsContext gc;
 	
 	public GameCanvas() {
 	        super();
-	        this.gc = this.getGraphicsContext2D();
+	        gc = this.getGraphicsContext2D();
 	        this.setWidth(1050);
 	        this.setHeight(600); 
 	        this.setup();
-	        loop(0) ;
+	        
 	    }
 	
 	public void setup() {
-		Archer ard = new Archer(new Point2D(100,100)) ;
-		RenderableHolder.getInstance().add(ard); 
-	}
-	
-	public void loop (int stage) {
+//		GameStage.updateGameStage() ;
+//		Archer ard = new Archer(new Point2D(100,100)) ;
+
+//		RenderableHolder.getInstance().add(ard); 
+		GameStage.duringStage(GameStage.stage);
 		
-		draw() ;
 	}
 	
-	private void draw() {
+	
+	public static void draw() {
 		drawBackground();
+		int x=0 ,y=0 ;
+//		MonsterData.allMonsterInField.add(new Orc());
+//		MonsterData.allMonsterInField.add(new Orc());
+		GamePlay.myChar.setPosition(new Point2D(200, 325));
+		RenderableHolder.getInstance().add((IRenderable) GamePlay.myChar);
+		if (MonsterData.allMonsterInField!=null) {
+			for (Monster e :MonsterData.allMonsterInField) {
+				e.setPosition(new Point2D(725-x, 325-y));
+				RenderableHolder.getInstance().add((IRenderable)e);
+				x -= 100 ; y+= 100 ;
+			}	
+		}
+	
 	    if(RenderableHolder.getInstance().getEntities()!=null) {
 	        for(IRenderable obj: RenderableHolder.getInstance().getEntities()) {
-	            obj.draw(this.gc);
+	            obj.draw(gc);
 	        }
 	    }
+	    RenderableHolder.getInstance().getEntities().clear(); 
 	}
 	
 	private void update() {
@@ -57,10 +80,9 @@ public class GameCanvas extends Canvas {
 //        }
     }
 	
-	private void drawBackground() {
+	private static void drawBackground() {
 		try (InputStream is = Files.newInputStream(Paths.get("res/bg_all.png"))) {
-			Image img = new Image(is) ;
-			img.re
+			Image img = new Image(is,1050,600,false,false) ;
 			gc.drawImage(img,0,0);
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");

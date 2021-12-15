@@ -2,7 +2,9 @@ package logic;
 
 import java.util.ArrayList;
 
+import Player.Archer;
 import Player.Assassin;
+import Player.Healer;
 import Player.Tank;
 import Potion.HealPotion;
 import Potion.ManaPotion;
@@ -12,14 +14,14 @@ import character.CharacterData;
 
 public class GamePlay {
 
-	public static ArrayList<Player> myChar;
-	public static ArrayList<Potion> myPotion;
+	public static Player myChar ;
+	public static ArrayList<Potion> myPotion = new ArrayList<>();
 	public static int money;
 	public static int healPotion;
 	public static int manaPotion;
 
 	public static void createGamePlay() {
-		myChar = new ArrayList<>();
+		myChar = null ;
 		myPotion = new ArrayList<>();
 		money = 0;
 		healPotion = 1;
@@ -27,28 +29,25 @@ public class GamePlay {
 		myPotion.add(new HealPotion());
 	}
 	
-	public static boolean haveTank() {
-		for (Player player : GamePlay.myChar) {
-			if (player instanceof Tank) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	public static boolean haveTank() {
+//		if (myChar instanceof Tank) {
+//			return true;
+//		}
+//		return false;
+//	}
+//	
+//	public static Player findTank() {
+//		if (myChar instanceof Tank) {
+//			return myChar;
+//		}
+//		return null;
+//	}
 	
-	public static Player findTank() {
-		for (Player player : GamePlay.myChar) {
-			if (player instanceof Tank) {
-				return player;
-			}
-		}
-		return null;
-	}
-	
-	public static void addChooseCharacter(Player player) {
-		myChar.add(player);
-		CharacterData.updateAllChooseCharacter(player);
-	}
+//	public static void addChooseCharacter(Player player) {
+//		myChar = player ;
+//		
+//		CharacterData.updateAllChooseCharacter(player);
+//	}
 	
 	public static void addPotion(Potion potion) {
 		updateAddPotion(potion);
@@ -56,14 +55,12 @@ public class GamePlay {
 	}
 	
 	public static void updateCharacterPerTurn() {
-		for (Player player : myChar) {
-			if (player instanceof Tank) {
-				((Tank) player).updateIsTuant();
-				((Tank) player).updateIsArmor();
-			}
-			if (player instanceof Assassin) {
-				((Assassin) player).updateIsCheer();
-			}
+		if (myChar instanceof Tank) {
+			((Tank) myChar).updateIsTuant();
+			((Tank) myChar).updateIsArmor();
+		}
+		if (myChar instanceof Assassin) {
+			((Assassin) myChar).updateIsCheer();
 		}
 	}
 	
@@ -77,10 +74,9 @@ public class GamePlay {
 	}
 	
 	public static boolean isAllCharacterDead() {
-		for (Player player : myChar) {
-			if (player.isAlive()) {
-				return false;
-			}
+		myChar.updateIsAlive();
+		if (myChar.isAlive()) {
+			return false;
 		}
 		return true;
 	}
@@ -101,7 +97,7 @@ public class GamePlay {
 		return myPotion;
 	}
 
-	public static ArrayList<Player> getMyChar() {
+	public static Player getMyChar() {
 		return myChar;
 	}
 

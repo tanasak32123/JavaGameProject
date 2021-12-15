@@ -6,11 +6,16 @@ import logic.GamePlay;
 
 public abstract class Monster extends Maincharacter implements IRenderable{
 	private ProgressBar healthBar;
+	
+	public Monster() {
+		super() ;
+	}
 
 	public Monster(String name, String description, double health, double maxHealth, double mana, double maxMana,
 			double attack, double defense,String image) {
 		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image);
 	}
+	
 
 	public int attack(Maincharacter character) {
 		if (character instanceof Player) {
@@ -35,8 +40,8 @@ public abstract class Monster extends Maincharacter implements IRenderable{
 	}
 
 	public int attackRandom() {
-		int choose = (int) (Math.random() * (GamePlay.myChar.size()));
-		return attack(GamePlay.myChar.get(choose));
+		
+		return attack(GamePlay.myChar);
 	}
 
 	public int getElementalAdvantage(Player play) {

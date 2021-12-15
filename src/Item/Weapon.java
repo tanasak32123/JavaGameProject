@@ -2,7 +2,7 @@ package Item;
 
 import entity.Player;
 
-public class Weapon extends Equipment implements Equipable {
+public class Weapon extends Equipment {
 	private int damage;
 	private int lifesteal;
 
@@ -25,14 +25,6 @@ public class Weapon extends Equipment implements Equipable {
 		return lifesteal;
 	}
 
-	public void equipItem(Player selectedCharacter) {
-		// set weapon to character
-		selectedCharacter.setWeapon(this);
-		selectedCharacter
-				.setAttack(selectedCharacter.getAttack() + (damage - selectedCharacter.getWeapon().getDamage()));
-		selectedCharacter.setLifesteal(
-				selectedCharacter.getLifesteal() + (lifesteal - selectedCharacter.getWeapon().getLifesteal()));
-	}
 
 	public String getDamageText() {
 		if (damage > 0) {

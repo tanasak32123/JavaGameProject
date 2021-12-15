@@ -1,5 +1,6 @@
 package application;
 
+import gui.ChooseMons;
 import gui.Fighting;
 import gui.ShopUi;
 import javafx.application.*;
@@ -19,6 +20,7 @@ public class Main extends Application{
 		primaryStage.setTitle("POD AND NOON");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
 	}
 	
 	

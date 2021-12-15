@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import entity.Monster;
 import entity.Player;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.GamePlay;
@@ -19,13 +20,19 @@ public class Assassin extends Player {
 
 	public Assassin(int level) {
 		super("Ghostpunch", "This character is good character to choose first.", 130 * condi(level), 130 * condi(level),
-				35 * condi(level), 35 * condi(level), 30 * condi(level), 20 * condi(level), level,"res/assassin.png");
+				35 * condi(level), 35 * condi(level), 30 * condi(level), 20 * condi(level), level,"res/assassin3.png");
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Punch The Line";
 		nameSkill2 = "Cheer Up";
 		isCheer = false;
 		cooldownCheer = 0;
+		setPosition(new Point2D(100, 100)) ;
 	}
+	
+	public Assassin(Point2D point) {
+		setPosition(point);
+	}
+	
 
 	public boolean canSkill1() {
 		if (mana < 15)
@@ -76,9 +83,7 @@ public class Assassin extends Player {
 	public void updateIsCheer() {
 		if (cooldownCheer == 0) {
 			if (isCheer) {
-				for (Player player : GamePlay.getMyChar()) {
-					player.setAttack(player.getAttack() - 25);
-				}
+				GamePlay.myChar.setAttack(GamePlay.myChar.getAttack() + 25);
 				isCheer = false;
 			}
 		}
@@ -120,7 +125,7 @@ public class Assassin extends Player {
 	@Override
 	public void draw(GraphicsContext p0) {
 		Image img  ;
-		try (InputStream is = Files.newInputStream(Paths.get("res/assassin.png"))) {
+		try (InputStream is = Files.newInputStream(Paths.get("res/assassin3.png"))) {
 			img = new Image(is) ;
 			p0.drawImage(img, position.getX(),position.getY());
 		} catch (IOException e) {

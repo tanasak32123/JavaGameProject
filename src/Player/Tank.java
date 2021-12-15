@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import entity.Player;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -20,14 +21,20 @@ public class Tank extends Player {
 
 	public Tank(int level) {
 		super("Jotaro", "This is character is Big-Daddy.", 150 * condi(level), 150 * condi(level), 25 * condi(level),
-				25 * condi(level), 30 * condi(level), 30 * condi(level), level, "res/Tank.png");
+				25 * condi(level), 30 * condi(level), 25 * condi(level), level, "res/Tank.png");
 		nameSkill1 = "Taunt";
 		nameSkill2 = "Armor Up";
 		isTaunt = false;
 		cooldownTaunt = 0;
 		isArmor = false;
 		cooldownArmor = 0;
+		setPosition(new Point2D(100, 100)) ;
 	}
+	
+	public Tank(Point2D point) {
+		setPosition(point);
+	}
+	
 
 	public boolean canSkill1() {
 		if (mana < 10)
@@ -61,7 +68,7 @@ public class Tank extends Player {
 		if (o1.equals(this) && canSkill2()) {
 			isArmor = true;
 			cooldownArmor = 2;
-			setDefense(getDefense() + 50);
+			setDefense(getDefense() + 15);
 			mana -= 15;
 			return true;
 		}

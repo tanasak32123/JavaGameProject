@@ -5,7 +5,7 @@ import entity.Monster;
 
 public class MonsterData {
 	
-	public static ArrayList<Monster> allMonsterInField;
+	public static ArrayList<Monster> allMonsterInField = new ArrayList<>();
 	
 	public static boolean isAllMonsterInFieldDead() {
 		for (Monster monster : allMonsterInField) {

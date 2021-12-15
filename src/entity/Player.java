@@ -37,6 +37,7 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 		accessory = new Accessory();
 		this.level = level;
 		this.lifesteal = 0;
+		position = new Point2D(100, 100);
 	}
 	
 	public void doAction() {

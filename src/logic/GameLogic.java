@@ -4,6 +4,7 @@ import Player.Tank;
 import character.MonsterData;
 import entity.Monster;
 import entity.Player;
+import javafx.animation.AnimationTimer;
 
 public class GameLogic {
 
@@ -11,70 +12,64 @@ public class GameLogic {
 	public static boolean winner = false;
 	public static boolean endStage = false;
 
-	public static void actionInTurnPhase() {
+//    public static Monster selecetedMonster = MonsterData.allMonsterInField.get(0);
+    public static boolean playerAttack = false;
+    public static boolean playerSkill = false;
+    
+    public GameLogic() {
+    	
+    }
 
-		while (!(endStage) && !(MonsterData.isAllMonsterInFieldDead()) && !(GamePlay.isAllCharacterDead())) {
+    public static void actionInTurnPhase() {
+            playerAttack = false;
+            playerSkill = false;
+//            selectedPlayer = player;
+            (new AnimationTimer() {
+                public void handle(final long now) {
+                	if (playerDoActionTurn()) this.stop(); 
+                	System.out.println(GameStage.stage);
+                }
+            }).start();
+            if (MonsterData.isAllMonsterInFieldDead()) {
 
-			for (Player player : GamePlay.myChar) {
-				player.doAction();
-				if (MonsterData.isAllMonsterInFieldDead()) {
-					// go next stage
-					GameStage.createGameStage();
-					endStage = true;
-					if (GameStage.stage == 10) {
-						winner = true;
-					}
-					break;
-					//
-				}
-			}
-			if (endStage) {
-				break;
-			}
-			for (Monster monster : MonsterData.allMonsterInField) {
-				if (GamePlay.haveTank()) {
-					Player tank = GamePlay.findTank();
-					if (((Tank) tank).isTaunt()) {
-						monster.attack(tank);
-					}
-					else {
-						monster.attackRandom();
-					}
-				} else {
-					monster.attackRandom();
-				}
-				if (GamePlay.isAllCharacterDead()) {
-					// restart menu
+                endStage = true;
+            }
+        
+        for (Monster monster : MonsterData.allMonsterInField) {
+            try {
+                Thread.sleep(5000);
+                monster.attackRandom();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            if (GamePlay.isAllCharacterDead()) {
 
-					loser = true;
-					endStage = true;
-					//
-					break;
-				}
+                endStage = true;
+            }
+        	}
+    	}
+
+		public static boolean playerDoActionTurn() {
+		        return playerAttack || playerSkill ;
+		   }
+	
+		public static void isLoser() {
+			if (loser) {
+				// show restart menu;
+	
+				//
+				GameStage.restartToNewBegin();
 			}
-			if (endStage) {
-				break;
-			}
-			GamePlay.updateCharacterPerTurn();
-			
 		}
-	}
-
-	public static void isLoser() {
-		if (loser) {
-			// show restart menu;
-
-			//
-			GameStage.restartToNewBegin();
+	
+		public static void isWinner() {
+			if (winner) {
+				// show image congratulation and return to menu
+	
+				//
+			}
 		}
-	}
-
-	public static void isWinner() {
-		if (winner) {
-			// show image congratulation and return to menu
-
-			//
-		}
-	}
+		
 
 }

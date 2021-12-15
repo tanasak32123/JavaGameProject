@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import entity.Monster;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.GamePlay;
@@ -14,9 +15,12 @@ public class Orc extends Monster {
 
 	public Orc() {
 		super("Orc", "This is monster.It so easy to kill him.", 80, 80, 0, 0, 50, 10,"res/gigi.png");
-		// TODO Auto-generated constructor stub
+		setPosition(new Point2D(100, 100)) ;
 	}
 
+	public Orc(Point2D point) {
+		setPosition(point);
+	}
 	public void playerGetMoneyFromKilled() {
 		GamePlay.money += 25;
 	}

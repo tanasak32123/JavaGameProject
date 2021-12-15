@@ -26,7 +26,9 @@ public class Archer extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Make It Rain";
 		nameSkill2 = "Hunt The Mark";
+		setPosition(new Point2D(100, 100)) ;
 	}
+	
 	
 	public Archer (Point2D position) {
 		setPosition(position);

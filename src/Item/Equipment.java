@@ -4,7 +4,7 @@ public abstract class Equipment {
 	protected String name;
 	protected String description;
 	protected int price;
-	protected boolean isEmpty;
+	protected boolean soldOut;
 	protected String image ;
 	
 	
@@ -12,7 +12,7 @@ public abstract class Equipment {
 		name = "";
 		description = "";
 		price = 0;
-		isEmpty = false;
+		soldOut = false;
 		image =  "res/white.jpg";
 	}
 	
@@ -20,7 +20,7 @@ public abstract class Equipment {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		isEmpty = false;
+		soldOut = false;
 		this.image = image ;
 	}
 	
@@ -28,12 +28,25 @@ public abstract class Equipment {
 		return name;
 	}
 
-	public boolean isEmpty() {
-		return isEmpty;
+
+	public boolean isSoldOut() {
+		return soldOut;
 	}
 
-	public void setIsEmpty(boolean isEmpty) {
-		this.isEmpty = isEmpty;
+	public void setSoldOut(boolean soldOut) {
+		this.soldOut = soldOut;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public int getPrice() {
