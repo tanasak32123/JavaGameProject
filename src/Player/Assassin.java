@@ -15,24 +15,19 @@ import logic.GamePlay;
 public class Assassin extends Player {
 	private String nameSkill1;
 	private String nameSkill2;
-	private boolean isCheer;
-	private int cooldownCheer;
 
 	public Assassin(int level) {
 		super("Ghostpunch", "This character is good character to choose first.", 130 * condi(level), 130 * condi(level),
-				35 * condi(level), 35 * condi(level), 30 * condi(level), 20 * condi(level), level,"res/assassin3.png");
+				35 * condi(level), 35 * condi(level), 30 * condi(level), 20 * condi(level), level, "res/assassin3.png");
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Punch The Line";
 		nameSkill2 = "Cheer Up";
-		isCheer = false;
-		cooldownCheer = 0;
-		setPosition(new Point2D(100, 100)) ;
+		setPosition(new Point2D(400, 325));
 	}
-	
+
 	public Assassin(Point2D point) {
 		setPosition(point);
 	}
-	
 
 	public boolean canSkill1() {
 		if (mana < 15)
@@ -41,9 +36,8 @@ public class Assassin extends Player {
 			return true;
 	}
 
-	
 	public boolean canSkill2() {
-		if (level < 3 || mana < 20)
+		if (mana < 30)
 			return false;
 		else
 			return true;
@@ -54,7 +48,7 @@ public class Assassin extends Player {
 		if (o1 instanceof Monster && canSkill1()) {
 			Monster monster = (Monster) o1;
 			setMana(getMana() - 15);
-			int damage = (int)(this.getAttack() * ((Math.random() * 3)));
+			int damage = (int) (this.getAttack() * ((Math.random() * 3)));
 			if (damage > monster.getDefense()) {
 				monster.setHealth(monster.getHealth() + monster.getDefense() - damage);
 			}
@@ -66,32 +60,15 @@ public class Assassin extends Player {
 
 	@Override
 	public boolean useSkill2(Object o1) {
-		if (o1 instanceof ArrayList && canSkill2()) {
-			@SuppressWarnings("unchecked")
-			ArrayList<Player> allPlayer = (ArrayList<Player>) o1;
-			for (Player p : allPlayer) {
-				p.setAttack(p.getAttack() + 25);
-			}
-			isCheer = true;
-			cooldownCheer = 2;
-			mana -= 20;
+		if (o1 instanceof Monster && canSkill2()) {
+			Monster monster = (Monster) o1;
+			monster.setHealth(monster.getHealth() - 150);
+			mana -= 30;
 			return true;
 		}
 		return false;
 	}
 
-	public void updateIsCheer() {
-		if (cooldownCheer == 0) {
-			if (isCheer) {
-				GamePlay.myChar.setAttack(GamePlay.myChar.getAttack() + 25);
-				isCheer = false;
-			}
-		}
-		else {
-			cooldownCheer -= 1;
-		}
-	}
-	
 	public String getNameSkill1() {
 		return nameSkill1;
 	}
@@ -100,33 +77,16 @@ public class Assassin extends Player {
 		return nameSkill2;
 	}
 
-	public boolean isCheer() {
-		return isCheer;
-	}
-
-	public int getCooldownCheer() {
-		return cooldownCheer;
-	}
-	
-	public void setCheer(boolean isCheer) {
-		this.isCheer = isCheer;
-	}
-
-	public void setCooldownCheer(int cooldownCheer) {
-		this.cooldownCheer = cooldownCheer;
-	}
-
-
 	@Override
 	public void draw(GraphicsContext p0) {
-		Image img  ;
+		Image img;
 		try (InputStream is = Files.newInputStream(Paths.get("res/assassin3.png"))) {
-			img = new Image(is) ;
-			p0.drawImage(img, position.getX(),position.getY());
+			img = new Image(is);
+			p0.drawImage(img, position.getX(), position.getY());
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");
 		}
-		
+
 	}
 
 	@Override
@@ -140,5 +100,4 @@ public class Assassin extends Player {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

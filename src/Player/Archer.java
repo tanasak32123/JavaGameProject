@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import character.MonsterData;
 import entity.Monster;
 import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,15 +28,12 @@ public class Archer extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Make It Rain";
 		nameSkill2 = "Hunt The Mark";
-		setPosition(new Point2D(100, 100)) ;
+		setPosition(new Point2D(100, 900));
 	}
-	
-	
-	public Archer (Point2D position) {
+
+	public Archer(Point2D position) {
 		setPosition(position);
 	}
-
-
 
 	public boolean canSkill1() {
 		if (mana < 15)
@@ -44,7 +43,7 @@ public class Archer extends Player {
 	}
 
 	public boolean canSkill2() {
-		if (level < 3 || mana < 30)
+		if (mana < 30)
 			return false;
 		else
 			return true;
@@ -53,11 +52,9 @@ public class Archer extends Player {
 	@Override
 	public boolean useSkill1(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1 instanceof ArrayList && canSkill1()) {
-			@SuppressWarnings("unchecked")
-			ArrayList<Monster> allMonster = (ArrayList<Monster>) o1;
-			for (Monster monster : allMonster) {
-				monster.setHealth(monster.getHealth() - 40);
+		if (canSkill1()) {
+			for (Monster monster : MonsterData.allMonsterInField) {
+				monster.setHealth(monster.getHealth() - 60);
 			}
 			mana -= 15;
 			return true;
@@ -70,7 +67,7 @@ public class Archer extends Player {
 		// TODO Auto-generated method stub
 		if (o1 instanceof Monster && canSkill2()) {
 			Monster monster = (Monster) o1;
-			monster.setHealth(monster.getHealth() - 100);
+			monster.setHealth(monster.getHealth() - 150);
 			mana -= 30;
 			return true;
 		}
@@ -85,17 +82,16 @@ public class Archer extends Player {
 		return nameSkill2;
 	}
 
-
 	@Override
 	public void draw(GraphicsContext p0) {
-		Image img  ;
+		Image img;
 		try (InputStream is = Files.newInputStream(Paths.get("res/carry.png"))) {
-			img = new Image(is) ;
-			p0.drawImage(img, position.getX(),position.getY());
+			img = new Image(is);
+			p0.drawImage(img, position.getX(), position.getY());
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");
 		}
-	
+
 	}
 
 	@Override

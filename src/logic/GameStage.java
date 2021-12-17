@@ -8,65 +8,69 @@ import Player.Tank;
 import character.CharacterData;
 import character.MonsterData;
 import entity.Player;
+import gui.ChooseMons;
+import gui.Fighting;
 import gui.GameCanvas;
+import gui.WinnerUi;
 import javafx.animation.AnimationTimer;
+import javafx.scene.canvas.Canvas;
+import scene.FightingScene;
+import scene.GameOverScene;
+import scene.SceneHolder;
+import scene.WinnerScene;
 import Shop.Shop;
+import application.Main;
 
 public class GameStage {
 
 	public static int stage = 0;
 	public static int turn = 0;
 
-//	public static void runGameStage() {
-//		while (!GameLogic.winner && !GameLogic.loser) {
-//			createGameStage();
-//		}
-//	}
-
-//	public static void createGameStage() {
-//		updateGameStage();
-//		duringStage(stage);
-//		if (GameLogic.winner) {
-//			GameLogic.isWinner();
-//		}
-//		else {
-//			GameLogic.endStage = false;
-//			resetToNewStage();
-//			stage += 1;
-//		}
-//	}
-
 	public static void changeturn(int t) {
 		turn = t;
 	}
 
 	public static void updateturn() {
-		switch(turn) {
-			case 0 :{
-				changeturn(1);
-				updateturn();
-				break ;
-				
-			}
-			case 1 :{
-				(new AnimationTimer() {
-		              public void handle(final long now) {
-		                    if (GameLogic.isselectemonster) {
-		                    	GameLogic.isselectemonster = false; 
-		                    	this.stop();
-		                    }
-		                }
-		         }).start();
-				break;
-			}
-			case 2: {
-				System.out.println("turn2");
-				GameLogic.actionmons();
-				changeturn(1);
-				updateturn();
-				break ;
-			}
-		}if (GameCanvas.gc!=null)GameCanvas.draw() ;
+		switch (turn) {
+		case 0: {
+			changeturn(1);
+			updateturn();
+			break;
+
+		}
+		case 1: {
+			(new AnimationTimer() {
+				public void handle(final long now) {
+					if (stage >= 10) {
+						if (MonsterData.isAllMonsterInFieldDead()) {
+							Main.sceneHolder.switchScene(new WinnerScene());
+							this.stop();
+						}
+					} else if (MonsterData.isAllMonsterInFieldDead()) {
+						updateGameStage();
+						Main.sceneHolder.switchScene(new FightingScene());
+					} else if (GameLogic.isselectemonster) {
+						GameLogic.isselectemonster = false;
+						this.stop();
+					} else if (!GamePlay.myChar.isAlive()) {
+						Main.sceneHolder.switchScene(new GameOverScene());
+						this.stop();
+					}
+
+				}
+
+			}).start();
+			break;
+		}
+		case 2: {
+			GameLogic.actionmons();
+			changeturn(1);
+			updateturn();
+			break;
+		}
+		}
+		if (GameCanvas.gc != null)
+			GameCanvas.draw();
 	}
 
 	public static void updateGameStage() {
@@ -74,6 +78,7 @@ public class GameStage {
 		resetToNewStage();
 		switch (stage) {
 		case 0: {
+
 			break;
 		}
 		case 1: {
@@ -87,9 +92,10 @@ public class GameStage {
 			break;
 		}
 		case 3: {
+			resetToNewStage();
 			// choose character and open shop
 			GamePlay.myChar.leveup();
-			Shop.openShop();
+
 			//
 			break;
 		}
@@ -97,6 +103,7 @@ public class GameStage {
 			MonsterData.allMonsterInField.add(new Orc());
 			MonsterData.allMonsterInField.add(new Orc());
 			MonsterData.allMonsterInField.add(new Orc());
+//			Fighting.shop.show();
 			break;
 		}
 		case 5: {
@@ -134,7 +141,6 @@ public class GameStage {
 			break;
 		}
 		}
-		stage++;
 	}
 
 	public static void duringStage() {
@@ -177,48 +183,7 @@ public class GameStage {
 		}
 	}
 
-	/*
-	 * public static void duringStage(int stage) { (new AnimationTimer() { public
-	 * void handle(final long now) { System.out.println("dqdqq"); switch (stage) {
-	 * case 1: case 2: { GameCanvas.draw(); GameLogic.actionInTurnPhase(); } case 3:
-	 * { // enter finish button
-	 * 
-	 * 
-	 * GameLogic.endStage = true; } case 4: case 5: { GameCanvas.draw();
-	 * GameLogic.actionInTurnPhase(); } case 6: { // enter finish button
-	 * 
-	 * // GameLogic.endStage = true; } case 7: case 8: { GameCanvas.draw();
-	 * GameLogic.actionInTurnPhase(); } case 9: { // enter finish button
-	 * 
-	 * // GameLogic.endStage = true; } case 10: { GameLogic.actionInTurnPhase();
-	 * this.stop(); } } System.out.println("fagfagaad122gag"); } }).start();
-	 * 
-	 * GameLogic.endStage = false;
-	 * 
-	 * resetToNewStage(); }
-	 */
-
-	public static void resetAbility(Player player) {
-		if (player instanceof Tank) {
-			if (((Tank) player).isArmor()) {
-				((Tank) player).setCooldownArmor(0);
-				((Tank) player).updateIsArmor();
-			}
-			if (((Tank) player).isTaunt()) {
-				((Tank) player).setTaunt(false);
-				((Tank) player).setCooldownTaunt(0);
-			}
-		}
-		if (player instanceof Assassin) {
-			if (((Assassin) player).isCheer()) {
-				((Assassin) player).setCooldownCheer(0);
-				((Assassin) player).updateIsCheer();
-			}
-		}
-	}
-
 	public static void resetToNewStage() {
-		resetAbility(GamePlay.myChar);
 		MonsterData.allMonsterInField.clear();
 	}
 

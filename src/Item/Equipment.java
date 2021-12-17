@@ -1,33 +1,33 @@
 package Item;
 
-public abstract class Equipment {
+import interfaces.InShop;
+
+public abstract class Equipment implements InShop {
 	protected String name;
 	protected String description;
 	protected int price;
 	protected boolean soldOut;
-	protected String image ;
-	
-	
+	protected String image;
+
 	public Equipment() {
 		name = "";
 		description = "";
 		price = 0;
 		soldOut = false;
-		image =  "res/white.jpg";
+		image = "res/white.jpg";
 	}
-	
-	public Equipment(String name,String description,int price,String image) {
+
+	public Equipment(String name, String description, int price, String image) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		soldOut = false;
-		this.image = image ;
+		this.image = image;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-
 
 	public boolean isSoldOut() {
 		return soldOut;
@@ -56,7 +56,7 @@ public abstract class Equipment {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public abstract String toString();
 
 	public String getImage() {
@@ -67,5 +67,4 @@ public abstract class Equipment {
 		this.image = image;
 	}
 
-	
 }

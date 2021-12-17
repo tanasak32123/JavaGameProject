@@ -7,7 +7,6 @@ import Item.Weapon;
 import Potion.HealPotion;
 import Potion.ManaPotion;
 import Potion.Potion;
-import character.MonsterData;
 import interfaces.Equipable;
 import interfaces.IRenderable;
 import interfaces.Usable;
@@ -16,66 +15,48 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
 import logic.GamePlay;
 
-public abstract class Player extends Maincharacter implements Equipable,Usable,IRenderable {
+public abstract class Player extends Maincharacter implements Equipable, Usable, IRenderable {
 	private int lifesteal;
 	private Weapon weapon;
 	private Armor armor;
 	private Accessory accessory;
 	private ProgressBar healthBar;
 	protected int level;
-	protected Point2D position ;
-	
+	protected Point2D position;
+
 	public Player() {
 		super();
-		position = new Point2D(100, 100);
+		position = new Point2D(100, 250);
 	}
 
 	public Player(String name, String description, double health, double maxHealth, double mana, double maxMana,
-			double attack, double defense, int level,String image) {
-		super(name, description, health, maxHealth, mana, maxMana, attack, defense,image);
+			double attack, double defense, int level, String image) {
+		super(name, description, health, maxHealth, mana, maxMana, attack, defense, image);
 		weapon = new Weapon();
 		armor = new Armor();
 		accessory = new Accessory();
 		this.level = level;
 		this.lifesteal = 0;
-		position = new Point2D(100, 100);
+		position = new Point2D(100, 250);
 	}
-	
-	public void doAction() {
-		// select one of the action to do
-		
-		
-		
-		//
-		
-		// case 1 : attack
-		// case 2 : skills
-		// case 3 : items
-	}
-	
+
 	public int attack(Maincharacter character) {
 		if (character instanceof Monster) {
 			if (attack <= character.getDefense()) {
 				return 0;
-			} 
+			}
 			int damage = (int) (attack - character.getDefense());
 			if (getElementalAdvantage((Monster) character) == 1) {
 				damage *= 1.3;
 				character.setHealth(character.getHealth() - damage);
-			}
-			else if (getElementalAdvantage((Monster) character) == -1) {
+			} else if (getElementalAdvantage((Monster) character) == -1) {
 				damage *= 0.7;
 				character.setHealth(character.getHealth() - damage);
-			}
-			else {
+			} else {
 				character.setHealth(character.getHealth() - damage);
 			}
 			if (lifesteal > 0) {
 				setHealth(health + lifesteal);
-			}updateIsAlive();
-			if (!isAlive) {
-				MonsterData.getAllMonsterInField().remove(character) ;
-				
 			}
 			return damage;
 		}
@@ -85,18 +66,16 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 	public void useItem(Potion potion) {
 		if (potion instanceof HealPotion) {
 			if (health < maxHealth) {
-				GamePlay.healPotion -= 1;
 				setHealth(health + HealPotion.heal);
 			}
 		}
 		if (potion instanceof ManaPotion) {
 			if (mana < maxMana) {
-				GamePlay.manaPotion -= 1;
 				setMana(mana + ManaPotion.mana);
 			}
 		}
 	}
-	
+
 	public void equipItem(Equipment equipment) {
 		if (equipment instanceof Weapon) {
 			setWeapon((Weapon) equipment);
@@ -108,7 +87,7 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 			setAccessory((Accessory) equipment);
 		}
 	}
-	
+
 	public void setWeapon(Weapon weapon) {
 		setAttack(attack + (weapon.getDamage() - this.weapon.getDamage()));
 		setLifesteal(lifesteal + (weapon.getLifesteal() - this.weapon.getLifesteal()));
@@ -128,11 +107,11 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 	}
 
 	public void leveup() {
-		setAttack(getAttack() * 1.2);
-		setDefense(getDefense() * 1.2);
-		setHealth(getMaxHealth() * 1.2);
-		setMaxHealth(getMaxHealth() * 1.2);
-		setMaxMana(getMaxMana() * 1.2);
+		setAttack(getAttack() * 1.1);
+		setDefense(getDefense() * 1.1);
+		setHealth(getMaxHealth() * 1.1);
+		setMaxHealth(getMaxHealth() * 1.1);
+		setMaxMana(getMaxMana() * 1.1);
 		setMana(getMaxMana());
 		setLevel(level + 1);
 	}
@@ -161,8 +140,7 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 	public void setLifesteal(int lifesteal) {
 		if (lifesteal < 0) {
 			this.lifesteal = 0;
-		}
-		else {
+		} else {
 			this.lifesteal = lifesteal;
 		}
 	}
@@ -194,7 +172,5 @@ public abstract class Player extends Maincharacter implements Equipable,Usable,I
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
-	
 
 }

@@ -1,7 +1,5 @@
 package gui;
 
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -50,7 +48,6 @@ import logic.GamePlay;
 import logic.GameStage;
 import scene.FightingScene;
 
-
 public class CharacterMenu extends BorderPane {
 
 	public CharacterMenu() {
@@ -58,8 +55,9 @@ public class CharacterMenu extends BorderPane {
 		this.setPrefSize(1050, 600);
 
 		try (InputStream is = Files.newInputStream(Paths.get("res/bg_all.png"))) {
-			Image img = new Image(is) ;
-			this.setBackground(new Background(new BackgroundImage(img, null, null, null,new BackgroundSize(1050,600, isFocusTraversable(), isDisabled(), isDisable(), isCache())))) ;
+			Image img = new Image(is);
+			this.setBackground(new Background(new BackgroundImage(img, null, null, null,
+					new BackgroundSize(1050, 600, isFocusTraversable(), isDisabled(), isDisable(), isCache()))));
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");
 		}
@@ -68,55 +66,53 @@ public class CharacterMenu extends BorderPane {
 		ch.setTranslateX(220);
 		ch.setTranslateY(100);
 		ch.setMaxHeight(300);
-		ch.setMaxWidth(200) ;
-		
-		ch.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY,new BorderWidths(25))));
-		
-		Rectangle r = new Rectangle() ;
+		ch.setMaxWidth(200);
+
+		ch.setBorder(new Border(
+				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(25))));
+
+		Rectangle r = new Rectangle();
 		r.setX(20);
 		r.setY(80);
 		r.setWidth(1010);
 		r.setHeight(350);
 		r.setArcWidth(20);
 		r.setArcHeight(20);
-		r.setOpacity(0.7) ;
-		r.setFill(Color.WHITE) ;
-		
+		r.setOpacity(0.7);
+		r.setFill(Color.WHITE);
 
-		this.getChildren().addAll(r,ch);
+		this.getChildren().addAll(r, ch);
 
 	}
 
 	private static class ChooseCharacter extends Pane {
 		public ChooseCharacter(String name) {
 			CharacterData.createChooseCharacterData();
-			ArrayList<Character> p = new ArrayList<>() ;
-			
+			ArrayList<Character> p = new ArrayList<>();
+
 			Text text = new Text(name);
 			text.setFill(Color.DARKBLUE);
 			text.setFont(Font.font("Comic Sans MS", FontWeight.BLACK, 24));
 
 			for (Player e : CharacterData.allChooseCharacter) {
-				p.add(new Character(e)) ;
-	
+				p.add(new Character(e));
+
 			}
-			
-			this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
-					CornerRadii.EMPTY,new BorderWidths(25))));
+
+			this.setBorder(new Border(
+					new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(25))));
 			this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 			text.setTranslateX(150);
 			text.setTranslateY(-50);
 			this.getChildren().add(text);
-			int s = -150 ;
-			for (Character e :p) {
+			int s = -150;
+			for (Character e : p) {
 				e.setTranslateX(s);
-				s += 250 ;
-				this.getChildren().add(e) ;
+				s += 250;
+				this.getChildren().add(e);
 			}
 		}
 	}
-
 
 	private static class Character extends VBox {
 		private Image image;
@@ -126,31 +122,31 @@ public class CharacterMenu extends BorderPane {
 			ImageView imagee = new ImageView(image);
 			imagee.setFitWidth(150);
 			imagee.setFitHeight(180);
-			Button button = new Button() ;
+			Button button = new Button();
 			button.setGraphic(imagee);
 //			button.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
 //			button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
 //					CornerRadii.EMPTY,new BorderWidths(1))));
 			button.setOnAction(new EventHandler<ActionEvent>() {
-				
+
 				@Override
 				public void handle(ActionEvent arg0) {
-					
-					GameStage.updateGameStage() ;
+
+					GameStage.updateGameStage();
 					if (play instanceof Archer) {
-						GamePlay.myChar = new Archer(1) ;
-					}else if (play instanceof Tank) {
-						GamePlay.myChar = new Tank(1) ;
-					}else if (play instanceof Assassin) {
-						GamePlay.myChar = new Assassin(1) ;
-					}else   {
-						GamePlay.myChar = new Healer(1) ;
+						GamePlay.myChar = new Archer(1);
+					} else if (play instanceof Tank) {
+						GamePlay.myChar = new Tank(1);
+					} else if (play instanceof Assassin) {
+						GamePlay.myChar = new Assassin(1);
+					} else {
+						GamePlay.myChar = new Healer(1);
 					}
 					GameStage.turn = 1;
 					GameStage.updateturn();
-					Scene fight = new FightingScene() ;
-					Main.sceneHolder.switchScene(fight) ;
-					
+					Scene fight = new FightingScene();
+					Main.sceneHolder.switchScene(fight);
+
 				}
 			});
 
@@ -192,13 +188,14 @@ public class CharacterMenu extends BorderPane {
 			mana.setTranslateX(5);
 			hp.setTranslateX(5);
 			type.setTranslateX(5);
-			
-			
-			this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, 
-					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-			try (InputStream is = Files.newInputStream(Paths.get("res/depositphotos_82698376-stock-photo-watercolor-purple-background-for-text.jpg"))) {
-				Image img = new Image(is) ;
-				this.setBackground(new Background(new BackgroundImage(img, null, null, null,new BackgroundSize(300,120, isFocusTraversable(), isDisabled(), isDisable(), isCache())))) ;
+
+			this.setBorder(new Border(
+					new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+			try (InputStream is = Files.newInputStream(
+					Paths.get("res/depositphotos_82698376-stock-photo-watercolor-purple-background-for-text.jpg"))) {
+				Image img = new Image(is);
+				this.setBackground(new Background(new BackgroundImage(img, null, null, null,
+						new BackgroundSize(300, 120, isFocusTraversable(), isDisabled(), isDisable(), isCache()))));
 			} catch (IOException e) {
 				System.out.println("Couldn't load image");
 			}
@@ -207,8 +204,5 @@ public class CharacterMenu extends BorderPane {
 		}
 
 	}
-	
-	
-
 
 }

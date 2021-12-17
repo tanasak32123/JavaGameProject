@@ -11,8 +11,8 @@ public class Weapon extends Equipment {
 		lifesteal = 0;
 	}
 
-	public Weapon(String name, String description, int price, int damage, int lifesteal,String image) {
-		super(name, description, price,image);
+	public Weapon(String name, String description, int price, int damage, int lifesteal, String image) {
+		super(name, description, price, image);
 		this.damage = damage;
 		this.lifesteal = lifesteal;
 	}
@@ -24,7 +24,6 @@ public class Weapon extends Equipment {
 	public int getLifesteal() {
 		return lifesteal;
 	}
-
 
 	public String getDamageText() {
 		if (damage > 0) {

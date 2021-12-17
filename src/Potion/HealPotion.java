@@ -1,14 +1,12 @@
 package Potion;
 
-
 public class HealPotion extends Potion {
 	public static int heal;
 
-	
 	public HealPotion() {
-		super("Healing Potion","This is heal your character 50 hp.",25,"res/healpotion.png");
+		super("Healing Potion", "This is heal your character 50 hp.", 25, "res/healpotion.png");
 		heal = 50;
-		
+
 	}
 
 	@Override
@@ -17,6 +15,4 @@ public class HealPotion extends Potion {
 		return "You gain " + heal + "hp.";
 	}
 
-
-		
 }

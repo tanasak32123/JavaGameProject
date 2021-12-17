@@ -1,27 +1,24 @@
 package entity;
 
-
-
-
 import javax.lang.model.type.NullType;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class Maincharacter {
-	
+
 	protected String name;
-    protected String description;
-    protected double health;
-    protected double maxHealth;
-    protected double mana;
-    protected double maxMana;
-    protected double attack;
-    protected double defense ;
-    protected PlayType type ;
-    protected String image ;
-    protected boolean isAlive;
-    protected Point2D position ;
+	protected String description;
+	protected double health;
+	protected double maxHealth;
+	protected double mana;
+	protected double maxMana;
+	protected double attack;
+	protected double defense;
+	protected PlayType type;
+	protected String image;
+	protected boolean isAlive;
+	protected Point2D position;
 
 	public Maincharacter() {
 		setName("Unknown");
@@ -32,22 +29,22 @@ public class Maincharacter {
 		this.maxMana = 0;
 		this.attack = 0;
 		this.defense = 0;
-		this.image =  "UNKnow" ;
+		this.image = "UNKnow";
 		isAlive = false;
-    	setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
-    	position = new Point2D(100, 100) ;
-    	
-    }
-	
+		setType(PlayType.values()[(int) (Math.random() * PlayType.values().length)]);
+		position = new Point2D(300, 425);
+
+	}
+
 	public Maincharacter(Point2D position) {
-		this() ;
-		this.position = position ;
-		
+		this();
+		this.position = position;
+
 	}
 
 	public Maincharacter(String name, String description, double health, double maxHealth, double mana, double maxMana,
-			double attack, double defense,String image) {
-		
+			double attack, double defense, String image) {
+
 		this.name = name;
 		this.description = description;
 		this.health = health;
@@ -109,9 +106,9 @@ public class Maincharacter {
 		if (health < maxHealth) {
 			if (health < 0) {
 				this.health = 0;
-			}else {
-				this.health = health;
-			}			
+			} else {
+				this.health = Math.min(health,getMaxHealth()) ;
+			}
 		} else
 			this.health = maxHealth;
 	}
@@ -130,9 +127,11 @@ public class Maincharacter {
 
 	public void setMana(double mana) {
 		if (mana < maxMana) {
-			this.mana = mana;
+			this.mana = Math.min(mana,getMaxMana()) ;
 		}
-		this.mana = maxMana;
+		else {
+			this.mana = maxMana;
+		}
 	}
 
 	public double getMaxMana() {
@@ -178,7 +177,5 @@ public class Maincharacter {
 	public void setPosition(Point2D position) {
 		this.position = position;
 	}
-
-
 
 }

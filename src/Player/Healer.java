@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import character.MonsterData;
+import entity.Monster;
 import entity.Player;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,13 +23,12 @@ public class Healer extends Player {
 		// TODO Auto-generated constructor stub
 		nameSkill1 = "Sympathy";
 		nameSkill2 = "Revive";
-		setPosition(new Point2D(100, 100)) ;
+		setPosition(new Point2D(100, 100));
 	}
-	
+
 	public Healer(Point2D point) {
 		setPosition(point);
 	}
-	
 
 	public boolean canSkill1() {
 		if (mana < 15)
@@ -37,7 +38,7 @@ public class Healer extends Player {
 	}
 
 	public boolean canSkill2() {
-		if (level < 3 || mana < 30)
+		if (mana < 30)
 			return false;
 		else
 			return true;
@@ -45,10 +46,9 @@ public class Healer extends Player {
 
 	@Override
 	public boolean useSkill1(Object o1) {
-		if (o1 instanceof Player && canSkill1()) {
-			Player player = (Player) o1;
+		if (canSkill1()) {
 			setMana(getMana() - 15);
-			player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + 50));
+			this.setHealth(Math.min(this.getMaxHealth(), this.getHealth() + 60));
 			return true;
 		}
 		return false;
@@ -57,14 +57,12 @@ public class Healer extends Player {
 	@Override
 	public boolean useSkill2(Object o1) {
 		// TODO Auto-generated method stub
-		if (o1 instanceof Player && canSkill2()) {
-			Player player = (Player) o1;
-			if (!player.isAlive()) {
-				player.setHealth(player.getMaxHealth() * 0.5);
-				player.setMana(player.getMaxMana() * 0.5);
-				mana -= 30;
-				return true;
+		if (canSkill2()) {
+			for (Monster monster : MonsterData.allMonsterInField) {
+				monster.setHealth(monster.getHealth() - 100);
 			}
+			mana -= 30;
+			return true;
 		}
 		return false;
 	}
@@ -77,18 +75,16 @@ public class Healer extends Player {
 		return nameSkill2;
 	}
 
-
-
 	@Override
 	public void draw(GraphicsContext p0) {
-		Image img  ;
+		Image img;
 		try (InputStream is = Files.newInputStream(Paths.get("res/healer.png"))) {
-			img = new Image(is) ;
-			p0.drawImage(img, position.getX(),position.getY());
+			img = new Image(is);
+			p0.drawImage(img, position.getX(), position.getY());
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");
 		}
-		
+
 	}
 
 	@Override

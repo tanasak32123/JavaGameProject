@@ -13,24 +13,23 @@ import logic.GamePlay;
 public class ArmorOrc extends Monster {
 
 	public ArmorOrc() {
-		super("Armor Orc","It is bigger one but not the biggest one.", 150, 150, 0, 0, 70, 30,"res/miniboss.png");
+		super("Armor Orc", "It is bigger one but not the biggest one.", 100, 100, 0, 0, 50, 15, "res/miniboss.png");
 	}
 
 	public void playerGetMoneyFromKilled() {
 		GamePlay.money += 50;
 	}
 
-
 	@Override
 	public void draw(GraphicsContext p0) {
-		Image img  ;
+		Image img;
 		try (InputStream is = Files.newInputStream(Paths.get("res/miniboss.png"))) {
-			img = new Image(is) ;
-			p0.drawImage(img, position.getX(),position.getY());
+			img = new Image(is);
+			p0.drawImage(img, position.getX(), position.getY());
 		} catch (IOException e) {
 			System.out.println("Couldn't load image");
 		}
-		
+		p0.fillText(String.valueOf(this.getHealth()), position.getX(), position.getY());
 	}
 
 	@Override
@@ -44,5 +43,5 @@ public class ArmorOrc extends Monster {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

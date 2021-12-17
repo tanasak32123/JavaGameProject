@@ -1,20 +1,20 @@
 package scene;
 
-import gui.CharacterMenu;
+import gui.GameOver;
 import gui.MainMenu;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 
-public class MainMenuScene extends Scene {
+public class GameOverScene extends Scene {
 
 	private StackPane stackPane;
 
-	private MainMenuScene(final Parent root) {
+	private GameOverScene(final Parent root) {
 		super(root);
 	}
 
-	public MainMenuScene() {
+	public GameOverScene() {
 		this((Parent) new StackPane());
 		this.initialize();
 	}
@@ -22,8 +22,7 @@ public class MainMenuScene extends Scene {
 	private void initialize() {
 		// this.setCursor(Cursor.NONE);
 		this.setRoot((Parent) (this.stackPane = new StackPane()));
-		this.stackPane.setPrefSize(1050, 600);
-		this.stackPane.getChildren().add(new MainMenu());
+		this.stackPane.setPrefSize(700, 500);
+		this.stackPane.getChildren().add(new GameOver());
 	}
-
 }
